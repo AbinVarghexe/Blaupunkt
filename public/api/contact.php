@@ -1,50 +1,62 @@
 <?php
+// Enable error logging
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json');
 
-// Handle preflight OPTIONS request
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
+try {
+    // Handle preflight OPTIONS request
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        http_response_code(200);
+        exit();
+    }
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'error' => 'Method not allowed']);
-    exit();
-}
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405);
+        echo json_encode(['success' => false, 'error' => 'Method not allowed']);
+        exit();
+    }
 
-// Get JSON input
-$input = file_get_contents('php://input');
-$data = json_decode($input, true);
+    // Get JSON input
+    $input = file_get_contents('php://input');
+    $data = json_decode($input, true);
 
-// Validate input
-if (!isset($data['name']) || !isset($data['email']) || !isset($data['message'])) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Missing required fields']);
-    exit();
-}
+    // Validate input
+    if (!isset($data['name']) || !isset($data['email']) || !isset($data['message'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Missing required fields']);
+        exit();
+    }
 
-$name = htmlspecialchars($data['name']);
-$email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
-$phone = isset($data['phone']) ? htmlspecialchars($data['phone']) : 'Not provided';
-$message = htmlspecialchars($data['message']);
+    $name = htmlspecialchars($data['name']);
+    $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+    $phone = isset($data['phone']) ? htmlspecialchars($data['phone']) : 'Not provided';
+    $message = htmlspecialchars($data['message']);
 
-// Validate email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Invalid email address']);
-    exit();
-}
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Invalid email address']);
+        exit();
+    }
 
-// Email configuration
-$to = 'info@blaupunkt-ev.com';
-$subject = "New Contact Form Submission from $name";
+    // Check if mail function is available
+    if (!function_exists('mail')) {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'error' => 'Email functionality not available']);
+        exit();
+    }
 
-// Email body (HTML)
-$body = "
+    // Email configuration
+    $to = 'info@blaupunkt-ev.com';
+    $subject = "New Contact Form Submission from $name";
+
+    // Email body (HTML) - Using heredoc to avoid quote escaping issues
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -281,21 +293,31 @@ $body = "
     </div>
 </body>
 </html>
-";
+HTML;
 
-// Email headers
-$headers = "MIME-Version: 1.0\r\n";
-$headers .= "Content-type: text/html; charset=UTF-8\r\n";
-$headers .= "From: noreply@blaupunkt-ev.com\r\n";
-$headers .= "Reply-To: $email\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion();
+    // Email headers
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: noreply@blaupunkt-ev.com\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion();
 
-// Send email
-if (mail($to, $subject, $body, $headers)) {
-    http_response_code(200);
-    echo json_encode(['success' => true, 'message' => 'Email sent successfully']);
-} else {
+    // Send email
+    if (mail($to, $subject, $body, $headers)) {
+        http_response_code(200);
+        echo json_encode(['success' => true, 'message' => 'Email sent successfully']);
+    } else {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'error' => 'Failed to send email']);
+    }
+
+} catch (Exception $e) {
+    error_log("Contact form error: " . $e->getMessage());
     http_response_code(500);
-    echo json_encode(['success' => false, 'error' => 'Failed to send email']);
+    echo json_encode(['success' => false, 'error' => 'Server error occurred']);
+} catch (Error $e) {
+    error_log("Contact form error: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode(['success' => false, 'error' => 'Server error occurred']);
 }
 ?>
