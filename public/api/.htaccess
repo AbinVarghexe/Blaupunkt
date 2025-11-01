@@ -1,0 +1,11 @@
+# Enable PHP execution
+<Files "contact.php">
+    SetHandler application/x-httpd-php
+</Files>
+
+# Allow CORS
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>

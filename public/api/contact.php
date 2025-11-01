@@ -57,6 +57,7 @@ try {
     $subject = "New Contact Form Submission from $name";
 
     // Email body (HTML) - Using heredoc to avoid quote escaping issues
+    $body = <<<HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>

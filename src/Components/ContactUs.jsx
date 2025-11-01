@@ -13,7 +13,7 @@ const ContactUs = () => {
     const breadcrumbItems = createSimpleBreadcrumbs('Contact');
     
     const [formData, setFormData] = useState({
-        fullName: '',
+        name: '',
         email: '',
         phone: '',
         message: ''
@@ -77,7 +77,7 @@ const ContactUs = () => {
 
             if (data.success) {
                 toast.success('Message sent successfully!', { duration: 6000 });
-                setFormData({ fullName: '', email: '', phone: '', message: '' });
+                setFormData({ name: '', email: '', phone: '', message: '' });
                 
                 // Redirect to contact page after successful submission
                 setTimeout(() => {
@@ -131,9 +131,9 @@ const ContactUs = () => {
                     <form onSubmit={handleSubmit} className="space-y-2">
                         <input
                             type="text"
-                            name="fullName"
+                            name="name"
                             placeholder="Full Name"
-                            value={formData.fullName}
+                            value={formData.name}
                             onChange={handleInputChange}
                             className="w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 placeholder-gray-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
                             required
