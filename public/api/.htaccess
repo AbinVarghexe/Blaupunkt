@@ -1,11 +1,26 @@
-# Enable PHP execution
+# Hostinger LiteSpeed Configuration
+# Force PHP execution for contact form files
 <Files "contact.php">
     SetHandler application/x-httpd-php
 </Files>
 
-# Allow CORS
+<Files "contact-production.php">
+    SetHandler application/x-httpd-php
+</Files>
+
+<Files "contact-debug.php">
+    SetHandler application/x-httpd-php
+</Files>
+
+# CORS Headers for cross-origin requests
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Methods "POST, OPTIONS"
-    Header set Access-Control-Allow-Headers "Content-Type"
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "POST, OPTIONS, GET"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    Header always set Access-Control-Max-Age "3600"
 </IfModule>
+
+# Handle OPTIONS preflight at Apache level (if PHP doesn't handle it)
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
