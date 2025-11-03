@@ -33,8 +33,33 @@ const ContactUs = () => {
         setLoading(true);
 
         try {
+            // Validate form data before sending
+            const trimmedData = {
+                name: formData.name.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
+                message: formData.message.trim()
+            };
+
+            // Check for empty fields
+            if (!trimmedData.name) {
+                toast.error('Please enter your name', { duration: 4000 });
+                setLoading(false);
+                return;
+            }
+            if (!trimmedData.email) {
+                toast.error('Please enter your email', { duration: 4000 });
+                setLoading(false);
+                return;
+            }
+            if (!trimmedData.message) {
+                toast.error('Please enter a message', { duration: 4000 });
+                setLoading(false);
+                return;
+            }
+
             logger.info('Submitting form to:', apiConfig.endpoints.contact);
-            logger.info('Form data:', formData);
+            logger.info('Form data:', trimmedData);
 
             const response = await fetch(apiConfig.endpoints.contact, {
                 method: 'POST',
@@ -42,7 +67,7 @@ const ContactUs = () => {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(trimmedData)
             });
 
             logger.info('Response status:', response.status);

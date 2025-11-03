@@ -26,10 +26,32 @@ try {
     $input = file_get_contents('php://input');
     $data = json_decode($input, true);
 
-    // Validate input
-    if (!isset($data['name']) || !isset($data['email']) || !isset($data['message'])) {
+    // Log received data for debugging
+    error_log("Received data: " . print_r($data, true));
+
+    // Check if JSON parsing was successful
+    if (json_last_error() !== JSON_ERROR_NONE) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'error' => 'Missing required fields']);
+        echo json_encode(['success' => false, 'error' => 'Invalid JSON: ' . json_last_error_msg()]);
+        exit();
+    }
+
+    // Validate input with specific error messages
+    if (!isset($data['name']) || empty(trim($data['name']))) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Missing required field: name']);
+        exit();
+    }
+
+    if (!isset($data['email']) || empty(trim($data['email']))) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Missing required field: email']);
+        exit();
+    }
+
+    if (!isset($data['message']) || empty(trim($data['message']))) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Missing required field: message']);
         exit();
     }
 
