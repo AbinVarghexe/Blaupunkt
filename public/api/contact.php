@@ -1,80 +1,112 @@
 <?php
-// Enable error logging
-error_reporting(E_ALL);
-ini_set('display_errors', 0);
-ini_set('log_errors', 1);
+/**
+ * Contact Form API Endpoint
+ * 
+ * This PHP script handles contact form submissions from the React frontend.
+ * It validates the input, sanitizes data, and sends an email to the configured recipient.
+ * 
+ * Expected Input (JSON):
+ *   - name: string (required) - User's full name
+ *   - email: string (required) - User's email address
+ *   - phone: string (optional) - User's phone number
+ *   - message: string (required) - User's message
+ * 
+ * Response (JSON):
+ *   Success: {"success": true, "message": "Email sent successfully"}
+ *   Error: {"success": false, "error": "Error message"}
+ * 
+ * HTTP Status Codes:
+ *   200 - Success
+ *   400 - Bad Request (missing/invalid fields)
+ *   405 - Method Not Allowed (not POST)
+ *   500 - Internal Server Error (email sending failed)
+ */
 
+// Enable error logging for debugging (errors logged to server error log)
+error_reporting(E_ALL);
+ini_set('display_errors', 0);  // Don't display errors to user (security)
+ini_set('log_errors', 1);       // Log errors to server log file
+
+// CORS Headers: Allow cross-origin requests from any domain
+// IMPORTANT: In production, replace * with your actual domain for security
+// Example: header('Access-Control-Allow-Origin: https://yourdomain.com');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
-header('Content-Type: application/json');
+header('Content-Type: application/json');  // Always return JSON responses
 
 try {
-    // Handle preflight OPTIONS request
+    // Handle preflight OPTIONS request (CORS check from browser)
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
         http_response_code(200);
         exit();
     }
 
+    // Only accept POST requests
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         http_response_code(405);
         echo json_encode(['success' => false, 'error' => 'Method not allowed']);
         exit();
     }
 
-    // Get JSON input
+    // Step 1: Read and parse JSON input from request body
     $input = file_get_contents('php://input');
     $data = json_decode($input, true);
 
-    // Log received data for debugging
-    error_log("Received data: " . print_r($data, true));
+    // Step 2: Log received data for debugging (check server error logs)
+    error_log("Received contact form data: " . print_r($data, true));
 
-    // Check if JSON parsing was successful
+    // Step 3: Check if JSON parsing was successful
     if (json_last_error() !== JSON_ERROR_NONE) {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Invalid JSON: ' . json_last_error_msg()]);
         exit();
     }
 
-    // Validate input with specific error messages
+    // Step 4: Validate required fields with specific error messages
+    // Check 'name' field
     if (!isset($data['name']) || empty(trim($data['name']))) {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Missing required field: name']);
         exit();
     }
 
+    // Check 'email' field
     if (!isset($data['email']) || empty(trim($data['email']))) {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Missing required field: email']);
         exit();
     }
 
+    // Check 'message' field
     if (!isset($data['message']) || empty(trim($data['message']))) {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Missing required field: message']);
         exit();
     }
 
-    $name = htmlspecialchars($data['name']);
-    $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+    // Step 5: Sanitize input data to prevent XSS attacks
+    $name = htmlspecialchars($data['name']);        // Remove HTML/JavaScript tags
+    $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);  // Sanitize email
     $phone = isset($data['phone']) ? htmlspecialchars($data['phone']) : 'Not provided';
     $message = htmlspecialchars($data['message']);
 
-    // Validate email
+    // Step 6: Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
         echo json_encode(['success' => false, 'error' => 'Invalid email address']);
         exit();
     }
 
-    // Check if mail function is available
+    // Step 7: Check if mail function is available (some hosting may disable it)
     if (!function_exists('mail')) {
         http_response_code(500);
         echo json_encode(['success' => false, 'error' => 'Email functionality not available']);
         exit();
     }
 
-    // Email configuration
+    // Step 8: Configure email settings
+    // IMPORTANT: Change this to your actual email address
     $to = 'info@blaupunkt-ev.com';
     $subject = "New Contact Form Submission from $name";
 

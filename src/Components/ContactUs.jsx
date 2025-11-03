@@ -28,12 +28,23 @@ const ContactUs = () => {
         }));
     };
 
+    /**
+     * Handle contact form submission
+     * @param {Event} e - Form submit event
+     * 
+     * IMPORTANT: This function handles the entire form submission flow including:
+     * - Client-side validation (trim whitespace and check for empty fields)
+     * - API call to PHP backend (contact.php)
+     * - Response parsing (avoiding "Body already consumed" error)
+     * - Success/error feedback to user via toast notifications
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         try {
-            // Validate form data before sending
+            // Step 1: Trim whitespace from all form fields to prevent empty submissions
+            // This prevents users from submitting spaces-only values
             const trimmedData = {
                 name: formData.name.trim(),
                 email: formData.email.trim(),
@@ -41,7 +52,8 @@ const ContactUs = () => {
                 message: formData.message.trim()
             };
 
-            // Check for empty fields
+            // Step 2: Client-side validation - Check for empty fields after trimming
+            // These checks provide immediate feedback before making API call
             if (!trimmedData.name) {
                 toast.error('Please enter your name', { duration: 4000 });
                 setLoading(false);
@@ -58,33 +70,42 @@ const ContactUs = () => {
                 return;
             }
 
+            // Step 3: Log submission details (helpful for debugging)
             logger.info('Submitting form to:', apiConfig.endpoints.contact);
             logger.info('Form data:', trimmedData);
 
+            // Step 4: Make API call to PHP backend
+            // Endpoint: /api/contact.php (configured in src/config/api.js)
             const response = await fetch(apiConfig.endpoints.contact, {
                 method: 'POST',
                 headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Content-Type': 'application/json',  // Tell server we're sending JSON
+                    'Accept': 'application/json'          // Tell server we expect JSON back
                 },
-                body: JSON.stringify(trimmedData)
+                body: JSON.stringify(trimmedData)  // Convert JavaScript object to JSON string
             });
 
+            // Step 5: Log response details for debugging
             logger.info('Response status:', response.status);
             logger.info('Response headers:', Object.fromEntries(response.headers.entries()));
 
-            // Get the response text first (can only read body once)
+            // Step 6: Read response body as text FIRST
+            // CRITICAL: Response body can only be read ONCE!
+            // We read as text first, then parse as JSON when needed
+            // This prevents "Body has already been consumed" error
             const responseText = await response.text();
             logger.info('Raw response:', responseText);
 
-            // Check if response is ok
+            // Step 7: Handle non-OK responses (4xx, 5xx errors)
             if (!response.ok) {
                 let errorDetails = '';
                 try {
+                    // Try to parse error response as JSON
                     const errorData = JSON.parse(responseText);
                     errorDetails = errorData.error || errorData.message || '';
                     logger.error('Server error details:', errorData);
                 } catch (parseErr) {
+                    // If not JSON, use raw text (first 100 chars)
                     errorDetails = responseText.substring(0, 100);
                     logger.error('Server error (non-JSON):', responseText);
                 }
@@ -92,7 +113,7 @@ const ContactUs = () => {
                 throw new Error(`Server error: ${response.status}${errorDetails ? ' - ' + errorDetails : ''}`);
             }
 
-            // Parse the response as JSON
+            // Step 8: Parse successful response as JSON
             let data;
             try {
                 data = JSON.parse(responseText);
@@ -102,34 +123,48 @@ const ContactUs = () => {
                 throw new Error('Server returned invalid JSON response');
             }
 
+            // Step 9: Handle success/failure based on response data
             if (data.success) {
+                // Success: Show confirmation, clear form, redirect after 2 seconds
                 toast.success('Message sent successfully!', { duration: 6000 });
                 setFormData({ name: '', email: '', phone: '', message: '' });
                 
-                // Redirect to contact page after successful submission
+                // Optional: Redirect to contact page after successful submission
                 setTimeout(() => {
                     navigate('/contact');
                 }, 2000);
             } else {
+                // Server processed request but returned failure
                 toast.error(data.message || 'Failed to send message. Please try again.', { duration: 6000 });
             }
         } catch (err) {
+            // Step 10: Catch and handle any errors during the entire process
             logger.error('Contact form submission error:', err);
             
+            // Provide user-friendly error messages based on error type
             let errorMessage = '⚠️ An error occurred. Please try again.';
             
+            // Network errors (no internet, server unreachable)
             if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
                 errorMessage = '⚠️ Cannot connect to server. Please check your internet connection.';
-            } else if (err.message.includes('500')) {
+            } 
+            // Server errors (500, 502, 503, etc.)
+            else if (err.message.includes('500')) {
                 errorMessage = '⚠️ Server error. The backend may not be properly configured. Please contact support.';
-            } else if (err.message.includes('CORS')) {
+            } 
+            // CORS errors (cross-origin request blocked)
+            else if (err.message.includes('CORS')) {
                 errorMessage = '⚠️ Access denied. Please ensure the backend allows requests from this domain.';
-            } else if (err.message) {
+            } 
+            // Use specific error message if available
+            else if (err.message) {
                 errorMessage = `⚠️ ${err.message}`;
             }
             
+            // Display error to user
             toast.error(errorMessage, { duration: 8000 });
         } finally {
+            // Always reset loading state, whether success or error
             setLoading(false);
         }
     };
