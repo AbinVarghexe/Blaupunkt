@@ -73,32 +73,34 @@ const ContactUs = () => {
             logger.info('Response status:', response.status);
             logger.info('Response headers:', Object.fromEntries(response.headers.entries()));
 
-            // Check if response is ok before parsing JSON
+            // Get the response text first (can only read body once)
+            const responseText = await response.text();
+            logger.info('Raw response:', responseText);
+
+            // Check if response is ok
             if (!response.ok) {
-                // Try to get error details from response
                 let errorDetails = '';
                 try {
-                    const errorData = await response.json();
+                    const errorData = JSON.parse(responseText);
                     errorDetails = errorData.error || errorData.message || '';
                     logger.error('Server error details:', errorData);
                 } catch (parseErr) {
-                    const errorText = await response.text();
-                    errorDetails = errorText.substring(0, 100);
-                    logger.error('Server error (non-JSON):', errorText);
+                    errorDetails = responseText.substring(0, 100);
+                    logger.error('Server error (non-JSON):', responseText);
                 }
                 
                 throw new Error(`Server error: ${response.status}${errorDetails ? ' - ' + errorDetails : ''}`);
             }
 
-            const contentType = response.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                const text = await response.text();
-                logger.error('Non-JSON response received:', text);
-                throw new Error('Server returned non-JSON response');
+            // Parse the response as JSON
+            let data;
+            try {
+                data = JSON.parse(responseText);
+                logger.info('Response data:', data);
+            } catch (parseErr) {
+                logger.error('Failed to parse JSON response:', responseText);
+                throw new Error('Server returned invalid JSON response');
             }
-
-            const data = await response.json();
-            logger.info('Response data:', data);
 
             if (data.success) {
                 toast.success('Message sent successfully!', { duration: 6000 });
