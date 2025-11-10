@@ -1,9 +1,18 @@
 <?php
 /**
- * Contact Form API Endpoint
+ * Contact Form API Endpoint - Office 365 SMTP Version
  * 
  * This PHP script handles contact form submissions from the React frontend.
- * It validates the input, sanitizes data, and sends an email to the configured recipient.
+ * It validates the input, sanitizes data, and sends an email via Office 365 SMTP.
+ * 
+ * REQUIREMENTS:
+ *   - PHPMailer library (install via Composer or manually)
+ *   - Valid Office 365 email account credentials
+ *   - SMTP access enabled on Office 365 account
+ * 
+ * INSTALLATION:
+ *   Option 1 (Composer): composer require phpmailer/phpmailer
+ *   Option 2 (Manual): Download from https://github.com/PHPMailer/PHPMailer
  * 
  * Expected Input (JSON):
  *   - name: string (required) - User's full name
@@ -21,6 +30,20 @@
  *   405 - Method Not Allowed (not POST)
  *   500 - Internal Server Error (email sending failed)
  */
+
+// Import PHPMailer classes
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load PHPMailer (adjust path based on your installation)
+// Option 1: If using Composer
+// require 'vendor/autoload.php';
+
+// Option 2: Manual installation (uncomment and adjust paths)
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
 // Enable error logging for debugging (errors logged to server error log)
 error_reporting(E_ALL);
@@ -98,16 +121,7 @@ try {
         exit();
     }
 
-    // Step 7: Check if mail function is available (some hosting may disable it)
-    if (!function_exists('mail')) {
-        http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Email functionality not available']);
-        exit();
-    }
-
-    // Step 8: Configure email settings
-    // IMPORTANT: Change this to your actual email address
-    $to = 'info@blaupunkt-ev.com';
+    // Step 7: Prepare email content
     $subject = "New Contact Form Submission from $name";
 
     // Email body (HTML) - Using heredoc to avoid quote escaping issues
@@ -350,20 +364,49 @@ try {
 </html>
 HTML;
 
-    // Email headers
-    $headers = "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-    $headers .= "From: noreply@blaupunkt-ev.com\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion();
+    // Step 8: Configure and send email via Office 365 SMTP
+    $mail = new PHPMailer(true);
 
-    // Send email
-    if (mail($to, $subject, $body, $headers)) {
+    try {
+        // Server settings
+        $mail->SMTPDebug = 0;                      // Set to 2 for detailed debug output
+        $mail->isSMTP();                           // Send using SMTP
+        $mail->Host       = 'smtp.office365.com';  // Office 365 SMTP server
+        $mail->SMTPAuth   = true;                  // Enable SMTP authentication
+        $mail->Username   = 'noreply@blaupunkt-ev.com';  // IMPORTANT: Change to your Office 365 email
+        $mail->Password   = 'YOUR_EMAIL_PASSWORD';       // IMPORTANT: Change to your email password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption
+        $mail->Port       = 587;                   // TCP port for TLS
+
+        // Recipients
+        $mail->setFrom('noreply@blaupunkt-ev.com', 'Blaupunkt EV Contact Form');
+        $mail->addAddress('info@blaupunkt-ev.com', 'Blaupunkt EV Team');  // Main recipient
+        $mail->addReplyTo($email, $name);          // User's email for replies
+
+        // Content
+        $mail->isHTML(true);                       // Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body    = $body;
+        $mail->AltBody = strip_tags($body);        // Plain text version for non-HTML clients
+
+        // Send email
+        $mail->send();
+        
+        // Success response
         http_response_code(200);
         echo json_encode(['success' => true, 'message' => 'Email sent successfully']);
-    } else {
+        
+    } catch (Exception $e) {
+        // Log the actual error for debugging
+        error_log("PHPMailer Error: {$mail->ErrorInfo}");
+        error_log("Exception Message: " . $e->getMessage());
+        
+        // User-friendly error response (don't expose SMTP credentials)
         http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Failed to send email']);
+        echo json_encode([
+            'success' => false, 
+            'error' => 'Failed to send email. Please try again later or contact us directly.'
+        ]);
     }
 
 } catch (Exception $e) {

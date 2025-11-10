@@ -1,0 +1,347 @@
+{
+  "info": {
+    "name": "Blaupunkt Contact API Test",
+    "description": "Test collection for Blaupunkt contact form API endpoint",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Contact Form - Success Test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has success field\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('success');",
+              "});",
+              "",
+              "pm.test(\"Success is true\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.success).to.eql(true);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+971 50 123 4567\",\n    \"message\": \"This is a test message from Postman. Testing the contact form API endpoint.\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/contact.php",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "contact.php"]
+        },
+        "description": "Test successful contact form submission with all required fields"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact Form - Missing Name",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"Error message mentions name\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.error).to.include('name');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+971 50 123 4567\",\n    \"message\": \"Test message without name field\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/contact.php",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "contact.php"]
+        },
+        "description": "Test error handling when name field is missing"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact Form - Missing Email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"Error message mentions email\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.error).to.include('email');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"John Doe\",\n    \"phone\": \"+971 50 123 4567\",\n    \"message\": \"Test message without email field\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/contact.php",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "contact.php"]
+        },
+        "description": "Test error handling when email field is missing"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact Form - Missing Message",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"Error message mentions message\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.error).to.include('message');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+971 50 123 4567\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/contact.php",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "contact.php"]
+        },
+        "description": "Test error handling when message field is missing"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact Form - Invalid Email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"Error message mentions email\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.error).to.include('email');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"invalid-email-format\",\n    \"phone\": \"+971 50 123 4567\",\n    \"message\": \"Test message with invalid email\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/contact.php",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "contact.php"]
+        },
+        "description": "Test email validation with invalid email format"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact Form - Empty Fields",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"   \",\n    \"email\": \"   \",\n    \"phone\": \"\",\n    \"message\": \"   \"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/contact.php",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "contact.php"]
+        },
+        "description": "Test validation with whitespace-only values"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact Form - GET Request (Should Fail)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 405\", function () {",
+              "    pm.response.to.have.status(405);",
+              "});",
+              "",
+              "pm.test(\"Error message about method\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.error).to.include('not allowed');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/api/contact.php",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "contact.php"]
+        },
+        "description": "Test that GET requests are properly rejected"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact Form - Without Phone (Optional)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Success is true\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.success).to.eql(true);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@example.com\",\n    \"message\": \"Testing without phone number since it's optional\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/contact.php",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "contact.php"]
+        },
+        "description": "Test that phone field is optional"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:3001",
+      "type": "string"
+    }
+  ]
+}

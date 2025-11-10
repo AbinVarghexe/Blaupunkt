@@ -86,8 +86,7 @@ const HeroSection = () => {
               {/* Description */}
               <p className='text-lg lg:text-xl font-myriad font-light text-blaupunkt-primary-dark leading-relaxed max-w-3xl mx-auto lg:mx-0'>
                 Explore Blaupunkt's range of high-quality EV charging cables
-                <br className='hidden lg:block' />
-                engineered for safety, speed, and seamless compatibility with
+                <br className='hidden lg:block' /> engineered for safety, speed, and seamless compatibility with
                 leading electric vehicles.
               </p>
             </div>
