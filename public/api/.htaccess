@@ -1,5 +1,10 @@
-# Hostinger LiteSpeed Configuration
+# ==============================================
+# Blaupunkt API Directory Configuration
+# Optimized for Hostinger LiteSpeed Server
+# ==============================================
+
 # Force PHP execution for contact form files
+# LiteSpeed requires explicit handler for PHP files
 <Files "contact.php">
     SetHandler application/x-httpd-php
 </Files>
@@ -16,26 +21,191 @@
     SetHandler application/x-httpd-php
 </Files>
 
-# Protect environment files from web access
+<Files "phpinfo.php">
+    SetHandler application/x-httpd-php
+</Files>
+
+<Files "test.php">
+    SetHandler application/x-httpd-php
+</Files>
+
+# ==============================================
+# CORS Headers Configuration
+# Enable cross-origin requests for API endpoints
+# ==============================================
+
+<IfModule mod_headers.c>
+    # Allow all origins (adjust for production if needed)
+    Header always set Access-Control-Allow-Origin "*"
+    
+    # Allowed HTTP methods
+    Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, PUT, DELETE"
+    
+    # Allowed request headers
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept"
+    
+    # Cache preflight response for 1 hour
+    Header always set Access-Control-Max-Age "3600"
+    
+    # Allow credentials (cookies, authorization headers)
+    # Header always set Access-Control-Allow-Credentials "true"
+</IfModule>
+
+# ==============================================
+# OPTIONS Preflight Request Handling
+# Return 200 OK for CORS preflight without executing PHP
+# ==============================================
+
+RewriteEngine On
+
+# Handle OPTIONS requests
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
+
+# ==============================================
+# Security: Environment Files Protection
+# Prevent direct access to .env and configuration files
+# ==============================================
+
+<FilesMatch "^\.env">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
 <Files ".env">
     Order allow,deny
     Deny from all
 </Files>
 
-<Files ".env.*">
+<Files ".env.local">
     Order allow,deny
     Deny from all
 </Files>
 
-# CORS Headers for cross-origin requests
-<IfModule mod_headers.c>
-    Header always set Access-Control-Allow-Origin "*"
-    Header always set Access-Control-Allow-Methods "POST, OPTIONS, GET"
-    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
-    Header always set Access-Control-Max-Age "3600"
+<Files ".env.production">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ".env.development">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# ==============================================
+# Security: Backup Files Protection
+# Block access to backup and temporary files
+# ==============================================
+
+<FilesMatch "\.(bak|backup|old|orig|save|swp|tmp)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block editor backup files
+<FilesMatch "~$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ==============================================
+# Security: Hidden Files Protection
+# Block access to hidden files and directories
+# ==============================================
+
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Exception: Allow .htaccess to function
+<Files ".htaccess">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# Exception: Allow .well-known directory (for SSL validation)
+<FilesMatch "^\.well-known">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# ==============================================
+# Security: Block PHPMailer Source Files
+# Prevent direct access to PHPMailer library files
+# ==============================================
+
+<FilesMatch "(PHPMailer|SMTP|Exception|OAuth|POP3)\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ==============================================
+# Security: Disable Directory Browsing
+# Prevent listing directory contents
+# ==============================================
+
+Options -Indexes
+
+# ==============================================
+# PHP Configuration
+# Error handling and security settings
+# ==============================================
+
+<IfModule mod_php.c>
+    # Disable display_errors in production
+    php_flag display_errors Off
+    
+    # Enable error logging
+    php_flag log_errors On
+    
+    # Set maximum execution time
+    php_value max_execution_time 60
+    
+    # Set maximum upload size
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
 </IfModule>
 
-# Handle OPTIONS preflight at Apache level (if PHP doesn't handle it)
-RewriteEngine On
-RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule ^(.*)$ $1 [R=200,L]
+# ==============================================
+# Performance: Compression
+# Enable GZIP compression for JSON responses
+# ==============================================
+
+<IfModule mod_deflate.c>
+    # Compress JSON API responses
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE text/json
+    
+    # Compress other text-based responses
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/xml
+</IfModule>
+
+# ==============================================
+# Character Encoding
+# Set default UTF-8 encoding for all responses
+# ==============================================
+
+AddDefaultCharset UTF-8
+
+# ==============================================
+# Rate Limiting (Optional - Uncomment if needed)
+# Limit requests to prevent abuse
+# ==============================================
+
+# <IfModule mod_ratelimit.c>
+#     # Limit to 10 requests per second per IP
+#     SetOutputFilter RATE_LIMIT
+#     SetEnv rate-limit 10
+# </IfModule>
+
+# ==============================================
+# Custom Error Pages (Optional)
+# ==============================================
+
+# ErrorDocument 403 /403.html
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
