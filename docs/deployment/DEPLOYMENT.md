@@ -10,7 +10,8 @@ Hostinger Server
 │   ├── index.html
 │   ├── assets/            → JS, CSS, Images
 │   ├── api/
-│   │   └── contact.php    → PHP Backend API
+│   │   ├── contact-graph.php → PHP Backend API (Microsoft Graph OAuth 2.0)
+│   │   └── .env              → Azure AD credentials (TENANT_ID, CLIENT_ID, CLIENT_SECRET)
 │   └── .htaccess          → Routing & Config
 ```
 
@@ -18,9 +19,9 @@ Hostinger Server
 
 - ✅ **All-in-One Deployment**: Frontend + Backend on same domain
 - ✅ **Automated Deployment**: GitHub Actions with SSH (Secure & Fast)
-- ✅ **PHP Email Backend**: Uses Hostinger's built-in mail() function
+- ✅ **Microsoft Graph API**: OAuth 2.0 authentication for secure email sending
 - ✅ **React Router Support**: Client-side routing with .htaccess
-- ✅ **No External Services**: Everything runs on Hostinger
+- ✅ **Environment Variables**: Azure credentials stored securely in .env
 - ✅ **Incremental Deployment**: rsync only uploads changed files
 
 ---
@@ -91,18 +92,21 @@ cat ~/.ssh/hostinger_deploy | pbcopy  # Mac
 cat ~/.ssh/hostinger_deploy | xclip   # Linux
 ```
 
-### 5. Configure Email in PHP Backend
+### 5. Configure Azure AD Credentials
 
-Edit `public/api/contact.php` and update:
+Create `public/api/.env` file with your Azure AD credentials:
 
-```php
-$to = 'info@blaupunkt-ev.com';  // Your email address
+```env
+TENANT_ID=your-tenant-id
+CLIENT_ID=your-client-id
+CLIENT_SECRET=your-client-secret
+SENDER_EMAIL=noreply@blaupunkt-ev.com
+RECIPIENT_EMAIL=info@blaupunkt-ev.com
 ```
 
-The email headers are already configured to use:
+**Important**: Never commit the `.env` file to Git! It's already in `.gitignore`.
 
-- **From**: `noreply@blaupunkt-ev.com`
-- **Reply-To**: User's email from form
+For detailed Azure setup instructions, see: `docs/email/MICROSOFT_GRAPH_SETUP.md`
 
 ### 6. Push to GitHub
 
@@ -149,7 +153,7 @@ If you have PHP installed:
 # Start PHP built-in server
 php -S localhost:8000 -t public
 
-# API available at: http://localhost:8000/api/contact.php
+# API available at: http://localhost:8000/api/contact-graph.php
 ```
 
 ---
@@ -162,7 +166,8 @@ Blaupunkt/
 │   └── deploy.yml              # GitHub Actions deployment
 ├── public/
 │   ├── api/
-│   │   └── contact.php         # PHP email handler
+│   │   ├── contact-graph.php   # PHP email handler (Microsoft Graph API)
+│   │   └── .env                # Azure AD credentials
 │   └── .htaccess               # Routing rules
 ├── src/
 │   ├── config/
@@ -177,7 +182,7 @@ Blaupunkt/
 
 ## API Endpoint
 
-**POST** `/api/contact.php`
+**POST** `/api/contact-graph.php`
 
 **Request Body:**
 ```json
@@ -253,19 +258,22 @@ git push origin main
 
 ### API Not Working
 
-1. Verify PHP file deployed: `/public_html/api/contact.php`
-2. Check file permissions (should be 644)
-3. Test API directly: `https://yourdomain.com/api/contact.php`
-4. Check browser console for CORS errors
+1. Verify PHP file deployed: `/public_html/api/contact-graph.php`
+2. Verify .env file exists: `/public_html/api/.env` (with Azure credentials)
+3. Check file permissions (should be 644)
+4. Test API directly: `https://yourdomain.com/api/contact-graph.php`
+5. Check browser console for CORS errors
+6. Verify Azure AD app permissions (Mail.Send must be granted)
 
 ---
 
 ## Important Notes
 
 - ✅ `.htaccess` handles React Router routing
-- ✅ PHP backend uses Hostinger's mail() function
+- ✅ PHP backend uses Microsoft Graph API with OAuth 2.0
 - ✅ No Node.js backend needed
-- ✅ No SSH access required
+- ✅ SSH deployment for security and speed
+- ✅ Environment variables for Azure credentials
 - ✅ Works with all Hostinger shared hosting plans
 
 ---

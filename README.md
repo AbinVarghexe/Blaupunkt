@@ -218,13 +218,12 @@ $from = 'noreply@blaupunkt-ev.com';  // Sender email
 - **[Setup Complete](docs/setup/SETUP_COMPLETE.md)** - Project setup status
 
 #### 🌐 Deployment
-- **[Deployment Guide](docs/deployment/DEPLOYMENT_GUIDE.md)** - Comprehensive deployment instructions
-- **[Hostinger Deployment](docs/deployment/HOSTINGER_DEPLOYMENT.md)** - Hostinger-specific guide
-- **[SSH Setup](docs/deployment/SSH_DEPLOYMENT_SETUP.md)** - SSH deployment configuration
+- **[Deployment Overview](docs/deployment/DEPLOYMENT.md)** - General deployment guide
+- **[SSH Setup](docs/deployment/SSH_DEPLOYMENT_SETUP.md)** - SSH deployment configuration (recommended)
+- **[SSH Quick Start](docs/deployment/SSH_DEPLOYMENT_QUICKSTART.md)** - Quick reference guide
 
 #### 📧 Email Configuration
-- **[Microsoft Graph Setup](docs/email/MICROSOFT_GRAPH_SETUP.md)** - OAuth 2.0 email with Microsoft Graph API
-- **[Office 365 Implementation](docs/email/OFFICE365_IMPLEMENTATION_SUMMARY.md)** - Office 365 overview
+- **[Microsoft Graph Setup](docs/email/MICROSOFT_GRAPH_SETUP.md)** - OAuth 2.0 email with Microsoft Graph API (current implementation)
 - **[Azure Permissions Request](docs/email/REQUEST_AZURE_PERMISSIONS.txt)** - Template for IT team
 
 #### 🧪 Testing

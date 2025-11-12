@@ -6,21 +6,15 @@ This directory contains all documentation for the Blaupunkt EV project.
 
 ### `/deployment`
 Deployment guides and hosting configuration
-- **DEPLOYMENT.md** - General deployment overview
-- **DEPLOYMENT_GUIDE.md** - Comprehensive deployment instructions
-- **HOSTINGER_DEPLOYMENT.md** - Hostinger-specific deployment guide
-- **SSH_DEPLOYMENT_QUICKSTART.md** - Quick start guide for SSH deployment
+- **DEPLOYMENT.md** - General deployment overview (updated for Microsoft Graph API)
 - **SSH_DEPLOYMENT_SETUP.md** - Detailed SSH setup instructions
+- **SSH_DEPLOYMENT_QUICKSTART.md** - Quick start guide for SSH deployment
 - **SSH_IMPLEMENTATION_SUMMARY.md** - SSH implementation summary
-- **DEPLOYMENT_CHECKLIST_OFFICE365.md** - Office 365 deployment checklist
-- **CAN_WE_USE_SSH.md** - SSH feasibility assessment
-- **PRODUCTION_BUILD_READY.md** - Production build verification
+- **CAN_WE_USE_SSH.md** - SSH advantages vs FTP
 
 ### `/email`
 Email configuration and API setup
 - **MICROSOFT_GRAPH_SETUP.md** - Complete Microsoft Graph API OAuth 2.0 setup guide
-- **OFFICE365_IMPLEMENTATION_SUMMARY.md** - Office 365 implementation overview
-- **OFFICE365_SMTP_SETUP.md** - Office 365 SMTP configuration (legacy)
 - **REQUEST_AZURE_PERMISSIONS.txt** - Template email for Azure AD permission requests
 
 ### `/setup`
@@ -37,7 +31,7 @@ Testing guides and collections
 
 1. **Setting up the project**: See [`/setup/SETUP_COMPLETE.md`](./setup/SETUP_COMPLETE.md)
 2. **Configuring email**: See [`/email/MICROSOFT_GRAPH_SETUP.md`](./email/MICROSOFT_GRAPH_SETUP.md)
-3. **Deploying to production**: See [`/deployment/DEPLOYMENT_GUIDE.md`](./deployment/DEPLOYMENT_GUIDE.md)
+3. **Deploying to production**: See [`/deployment/SSH_DEPLOYMENT_SETUP.md`](./deployment/SSH_DEPLOYMENT_SETUP.md)
 4. **Testing the API**: See [`/testing/POSTMAN_TEST_GUIDE.md`](./testing/POSTMAN_TEST_GUIDE.md)
 
 ## 📧 Email Implementation
