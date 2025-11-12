@@ -43,17 +43,37 @@
  */
 
 // ============================================================================
-// CONFIGURATION - UPDATE THESE VALUES
+// CONFIGURATION - LOAD FROM ENVIRONMENT VARIABLES
 // ============================================================================
 
+// Load environment variables from .env file if it exists
+if (file_exists(__DIR__ . '/.env')) {
+    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;  // Skip comments
+        if (strpos($line, '=') === false) continue;     // Skip invalid lines
+        list($key, $value) = explode('=', $line, 2);
+        $_ENV[trim($key)] = trim($value);
+        putenv(trim($key) . '=' . trim($value));
+    }
+}
+
 // Azure AD Application Configuration
-define('TENANT_ID', 'd635019c-eda8-462b-8992-f06c6effde9f');           // Directory (tenant) ID
-define('CLIENT_ID', '2386329a-167b-4073-a4ef-7e84252fd7ff');           // Application (client) ID
-define('CLIENT_SECRET', 'GrN8Q~LNaG60crleGw4vxNodYv4ypbpqUDc~idjw');   // Client Secret
+define('TENANT_ID', getenv('AZURE_TENANT_ID') ?: '');           // Directory (tenant) ID
+define('CLIENT_ID', getenv('AZURE_CLIENT_ID') ?: '');           // Application (client) ID
+define('CLIENT_SECRET', getenv('AZURE_CLIENT_SECRET') ?: '');   // Client Secret
 
 // Email Configuration
-define('SENDER_EMAIL', 'noreply@blaupunkt-ev.com');      // Must exist in your Office 365 tenant
-define('RECIPIENT_EMAIL', 'info@blaupunkt-ev.com');      // Where to send contact form submissions
+define('SENDER_EMAIL', getenv('SENDER_EMAIL') ?: 'noreply@blaupunkt-ev.com');      // Must exist in your Office 365 tenant
+define('RECIPIENT_EMAIL', getenv('RECIPIENT_EMAIL') ?: 'info@blaupunkt-ev.com');   // Where to send contact form submissions
+
+// Validate configuration
+if (empty(TENANT_ID) || empty(CLIENT_ID) || empty(CLIENT_SECRET)) {
+    error_log('CRITICAL: Azure AD credentials not configured. Check environment variables or .env file.');
+    http_response_code(500);
+    echo json_encode(['success' => false, 'error' => 'Server configuration error']);
+    exit();
+}
 
 // ============================================================================
 // ERROR HANDLING AND CORS CONFIGURATION

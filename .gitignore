@@ -32,6 +32,11 @@ dist-ssr/
 backend/.env
 backend/.env.local
 
+# API environment files (contains Azure secrets)
+public/api/.env
+public/api/.env.local
+public/api/.env.production
+
 # ==========================================
 # IDE & EDITORS
 # ==========================================

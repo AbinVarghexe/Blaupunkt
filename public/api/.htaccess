@@ -4,12 +4,27 @@
     SetHandler application/x-httpd-php
 </Files>
 
+<Files "contact-graph.php">
+    SetHandler application/x-httpd-php
+</Files>
+
 <Files "contact-production.php">
     SetHandler application/x-httpd-php
 </Files>
 
 <Files "contact-debug.php">
     SetHandler application/x-httpd-php
+</Files>
+
+# Protect environment files from web access
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ".env.*">
+    Order allow,deny
+    Deny from all
 </Files>
 
 # CORS Headers for cross-origin requests
