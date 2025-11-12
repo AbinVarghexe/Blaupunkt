@@ -1,0 +1,107 @@
+Subject: Request: Azure AD Permissions for Contact Form - Microsoft Graph API Setup
+
+Dear IT Team,
+
+I hope this message finds you well.
+
+As discussed earlier regarding our website contact form email functionality, we've successfully implemented a modern OAuth 2.0 solution using Microsoft Graph API. This approach allows us to keep Azure AD Security Defaults enabled while maintaining secure email delivery.
+
+To complete the implementation, I need assistance with the following Azure AD configurations. These require administrator-level permissions that I currently don't have access to.
+
+═══════════════════════════════════════════════════════════════════
+
+REQUIRED ACTIONS:
+
+1. GRANT API PERMISSIONS IN AZURE PORTAL
+   
+   Application Details:
+   • Application Name: Blaupunkt Contact Form API
+   • Application (Client) ID: 2386329a-167b-4073-a4ef-7e84252fd7ff
+   • Directory (Tenant) ID: d635019c-eda8-462b-8992-f06c6effde9f
+
+   Steps Required:
+   a) Navigate to: Azure Portal → Azure Active Directory → App registrations
+   b) Find the application using the Client ID above
+   c) Go to: API permissions → Add a permission
+   d) Select: Microsoft Graph → Application permissions
+   e) Add permission: Mail.Send
+   f) Click: "Grant admin consent for [Organization]"
+   g) Verify: Green checkmark appears next to Mail.Send permission
+
+   ⚠️ This step requires Global Administrator or Application Administrator role.
+
+
+2. CONFIGURE MAILBOX PERMISSIONS VIA POWERSHELL
+
+   The application needs permission to send emails from the noreply mailbox.
+
+   PowerShell Commands (requires Exchange Administrator role):
+
+   ```powershell
+   # Connect to Exchange Online
+   Install-Module -Name ExchangeOnlineManagement -Force
+   Connect-ExchangeOnline -UserPrincipalName admin@blaupunkt-ev.com
+
+   # Grant mailbox access to the application
+   Add-MailboxPermission -Identity "noreply@blaupunkt-ev.com" -User "2386329a-167b-4073-a4ef-7e84252fd7ff" -AccessRights FullAccess -InheritanceType All
+
+   # Verify permissions were granted
+   Get-MailboxPermission -Identity "noreply@blaupunkt-ev.com" | Format-Table User, AccessRights
+
+   # Disconnect
+   Disconnect-ExchangeOnline
+   ```
+
+═══════════════════════════════════════════════════════════════════
+
+BENEFITS OF THIS APPROACH:
+
+✅ Security Defaults remain ENABLED (no security compromise)
+✅ No app passwords required (modern OAuth 2.0 authentication)
+✅ Token-based authentication (more secure than password storage)
+✅ Granular permissions (only Mail.Send, nothing else)
+✅ Better audit trail through Azure AD logs
+✅ Microsoft-recommended best practice for application authentication
+
+═══════════════════════════════════════════════════════════════════
+
+TIMELINE:
+
+Once these permissions are granted, I can proceed with:
+• Final testing of the email functionality
+• Production deployment to the live website
+• Verification that contact form submissions are working correctly
+
+I estimate the entire process should take approximately 10-15 minutes to complete.
+
+═══════════════════════════════════════════════════════════════════
+
+DOCUMENTATION:
+
+I've prepared comprehensive documentation for your reference:
+• File: MICROSOFT_GRAPH_SETUP.md (in project repository)
+• Includes: Step-by-step screenshots guidance, troubleshooting, and security best practices
+
+If you have any questions or need clarification on any of these steps, please don't hesitate to reach out. I'm happy to schedule a quick call or meeting to walk through the process together if that would be helpful.
+
+Thank you for your assistance in implementing this secure solution for our contact form functionality.
+
+Best regards,
+[Your Name]
+[Your Position]
+[Your Contact Information]
+
+═══════════════════════════════════════════════════════════════════
+
+TECHNICAL REFERENCE (for your records):
+
+Application Configuration:
+• Tenant ID: d635019c-eda8-462b-8992-f06c6effde9f
+• Client ID: 2386329a-167b-4073-a4ef-7e84252fd7ff
+• Permission Required: Microsoft Graph → Mail.Send (Application)
+• Sender Email: noreply@blaupunkt-ev.com
+• Recipient Email: info@blaupunkt-ev.com
+• Authentication Method: OAuth 2.0 Client Credentials Flow
+
+Token Endpoint: https://login.microsoftonline.com/d635019c-eda8-462b-8992-f06c6effde9f/oauth2/v2.0/token
+Graph API Endpoint: https://graph.microsoft.com/v1.0/users/noreply@blaupunkt-ev.com/sendMail
