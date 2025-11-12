@@ -47,9 +47,9 @@
 // ============================================================================
 
 // Azure AD Application Configuration
-define('TENANT_ID', 'YOUR_TENANT_ID');           // e.g., 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-define('CLIENT_ID', 'YOUR_CLIENT_ID');           // e.g., 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-define('CLIENT_SECRET', 'YOUR_CLIENT_SECRET');   // Your app secret value
+define('TENANT_ID', 'd635019c-eda8-462b-8992-f06c6effde9f');           // Directory (tenant) ID
+define('CLIENT_ID', '2386329a-167b-4073-a4ef-7e84252fd7ff');           // Application (client) ID
+define('CLIENT_SECRET', 'GrN8Q~LNaG60crleGw4vxNodYv4ypbpqUDc~idjw');   // Client Secret
 
 // Email Configuration
 define('SENDER_EMAIL', 'noreply@blaupunkt-ev.com');      // Must exist in your Office 365 tenant

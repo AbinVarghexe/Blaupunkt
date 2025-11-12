@@ -24,9 +24,10 @@ export const apiConfig = {
   baseUrl: API_BASE_URL,
   endpoints: {
     // Contact form endpoint - Points to PHP script in public/api/
-    // In production: /api/contact.php (relative to site root)
-    // In development: ${VITE_API_URL}/api/contact.php (if VITE_API_URL is set)
-    contact: `${API_BASE_URL}/api/contact.php`
+    // Using Microsoft Graph API with OAuth 2.0 authentication
+    // In production: /api/contact-graph.php (relative to site root)
+    // In development: ${VITE_API_URL}/api/contact-graph.php (if VITE_API_URL is set)
+    contact: `${API_BASE_URL}/api/contact-graph.php`
   }
 };
 

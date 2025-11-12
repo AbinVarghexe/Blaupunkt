@@ -49,9 +49,9 @@
           "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+971 50 123 4567\",\n    \"message\": \"This is a test message from Postman. Testing the contact form API endpoint.\"\n}"
         },
         "url": {
-          "raw": "{{BASE_URL}}/api/contact.php",
+          "raw": "{{BASE_URL}}/api/contact-graph.php",
           "host": ["{{BASE_URL}}"],
-          "path": ["api", "contact.php"]
+          "path": ["api", "contact-graph.php"]
         },
         "description": "Test successful contact form submission with all required fields"
       },
@@ -91,9 +91,9 @@
           "raw": "{\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+971 50 123 4567\",\n    \"message\": \"Test message without name field\"\n}"
         },
         "url": {
-          "raw": "{{BASE_URL}}/api/contact.php",
+          "raw": "{{BASE_URL}}/api/contact-graph.php",
           "host": ["{{BASE_URL}}"],
-          "path": ["api", "contact.php"]
+          "path": ["api", "contact-graph.php"]
         },
         "description": "Test error handling when name field is missing"
       },
@@ -133,9 +133,9 @@
           "raw": "{\n    \"name\": \"John Doe\",\n    \"phone\": \"+971 50 123 4567\",\n    \"message\": \"Test message without email field\"\n}"
         },
         "url": {
-          "raw": "{{BASE_URL}}/api/contact.php",
+          "raw": "{{BASE_URL}}/api/contact-graph.php",
           "host": ["{{BASE_URL}}"],
-          "path": ["api", "contact.php"]
+          "path": ["api", "contact-graph.php"]
         },
         "description": "Test error handling when email field is missing"
       },
@@ -175,9 +175,9 @@
           "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+971 50 123 4567\"\n}"
         },
         "url": {
-          "raw": "{{BASE_URL}}/api/contact.php",
+          "raw": "{{BASE_URL}}/api/contact-graph.php",
           "host": ["{{BASE_URL}}"],
-          "path": ["api", "contact.php"]
+          "path": ["api", "contact-graph.php"]
         },
         "description": "Test error handling when message field is missing"
       },
@@ -217,9 +217,9 @@
           "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"invalid-email-format\",\n    \"phone\": \"+971 50 123 4567\",\n    \"message\": \"Test message with invalid email\"\n}"
         },
         "url": {
-          "raw": "{{BASE_URL}}/api/contact.php",
+          "raw": "{{BASE_URL}}/api/contact-graph.php",
           "host": ["{{BASE_URL}}"],
-          "path": ["api", "contact.php"]
+          "path": ["api", "contact-graph.php"]
         },
         "description": "Test email validation with invalid email format"
       },
@@ -254,9 +254,9 @@
           "raw": "{\n    \"name\": \"   \",\n    \"email\": \"   \",\n    \"phone\": \"\",\n    \"message\": \"   \"\n}"
         },
         "url": {
-          "raw": "{{BASE_URL}}/api/contact.php",
+          "raw": "{{BASE_URL}}/api/contact-graph.php",
           "host": ["{{BASE_URL}}"],
-          "path": ["api", "contact.php"]
+          "path": ["api", "contact-graph.php"]
         },
         "description": "Test validation with whitespace-only values"
       },
@@ -286,9 +286,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{BASE_URL}}/api/contact.php",
+          "raw": "{{BASE_URL}}/api/contact-graph.php",
           "host": ["{{BASE_URL}}"],
-          "path": ["api", "contact.php"]
+          "path": ["api", "contact-graph.php"]
         },
         "description": "Test that GET requests are properly rejected"
       },
@@ -328,9 +328,9 @@
           "raw": "{\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@example.com\",\n    \"message\": \"Testing without phone number since it's optional\"\n}"
         },
         "url": {
-          "raw": "{{BASE_URL}}/api/contact.php",
+          "raw": "{{BASE_URL}}/api/contact-graph.php",
           "host": ["{{BASE_URL}}"],
-          "path": ["api", "contact.php"]
+          "path": ["api", "contact-graph.php"]
         },
         "description": "Test that phone field is optional"
       },
@@ -345,3 +345,4 @@
     }
   ]
 }
+
