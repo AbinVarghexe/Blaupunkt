@@ -1,0 +1,25 @@
+# Robots.txt for Blaupunkt EV Charging Solutions
+# https://www.blaupunkt-ev.com/robots.txt
+
+# Allow all web crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+
+# Disallow sensitive files
+Disallow: /*.json$
+Disallow: /*.php$
+Disallow: /phpinfo.php
+
+# Allow CSS and JS files for better rendering
+Allow: /*.css$
+Allow: /*.js$
+
+# Crawl-delay (optional, adjust based on server capacity)
+# Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://www.blaupunkt-ev.com/sitemap.xml

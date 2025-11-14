@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../Components/Common/Navbar'
 import Breadcrumb from '../Components/Common/Breadcrumb'
+import SEO from '../Components/Common/SEO'
 
 const NotFound = () => {
   const breadcrumbItems = [
@@ -10,7 +11,13 @@ const NotFound = () => {
   ]
 
   return (
-    <div className='min-h-screen bg-white'>
+    <>
+      <SEO 
+        title="Page Not Found - Blaupunkt EV Charging"
+        description="The page you are looking for could not be found. Return to Blaupunkt EV Charging Solutions homepage."
+        noindex={true}
+      />
+      <div className='min-h-screen bg-white'>
       <Navbar />
 
       {/* Main Content */}
@@ -61,6 +68,7 @@ const NotFound = () => {
         </div>
       </main>
     </div>
+    </>
   )
 }
 

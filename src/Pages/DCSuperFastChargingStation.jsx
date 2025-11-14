@@ -9,6 +9,7 @@ import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
 import { Entirepagedata, ProductImages } from '../Data/index.js'
 import { dcSuperFastChargingStationData, dcSuperFastChargingStationConfig } from '../Data/DCSuperFastChargingStation/index.js'
+import SEO from '../Components/Common/SEO'
 
 const DCSuperFastChargingStation = () => {
   // Get data from Entirepagedata for DC Super Fast Charging Station
@@ -34,7 +35,14 @@ const DCSuperFastChargingStation = () => {
   )
 
   return (
-    <div>
+    <>
+      <SEO 
+        title="DC Super Fast Charging Station - Blaupunkt Ultra-Fast EV Charging"
+        description="Ultra-fast DC charging stations from Blaupunkt. High-power charging solutions for rapid EV charging at commercial and public locations."
+        keywords="DC super fast charging, ultra fast charger, high power EV charging, rapid charging station"
+        canonical="/dc-super-fast-charging-station"
+      />
+      <div>
       {' '}
       <HeroSection
         title={title}
@@ -87,6 +95,7 @@ const DCSuperFastChargingStation = () => {
         downloadData={dcSuperFastChargingStationConfig.downloads}
       />
     </div>
+    </>
   )
 }
 

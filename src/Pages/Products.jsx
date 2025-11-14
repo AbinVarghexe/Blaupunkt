@@ -11,6 +11,7 @@ import FiltersContainer from '../Components/Products/FiltersContainer'
 import ProductGrid from '../Components/Products/ProductGrid'
 import Pagination from '../Components/Products/Pagination'
 import { filterProducts, sortProducts } from '../Components/Products/filterUtils'
+import SEO from '../Components/Common/SEO'
 
 /**
  * Products Page - Main product listing page with filtering and sorting
@@ -159,24 +160,31 @@ const Products = () => {
   const breadcrumbItems = createSimpleBreadcrumbs('Products')
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <>
+      <SEO 
+        title="All Products - Blaupunkt EV Charging Solutions"
+        description="Browse Blaupunkt's complete range of EV charging products including AC chargers, DC fast chargers, portable charging solutions, and premium charging cables."
+        keywords="EV charging products, electric vehicle chargers, AC chargers, DC fast chargers, charging cables"
+        canonical="/products"
+      />
+      <div className="min-h-screen bg-white">
+        <Navbar />
 
-      {/* Main Content */}
-      <main className="pt-24 lg:pt-28">
-        {/* Breadcrumb */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={breadcrumbItems} />
-        </div>
+        {/* Main Content */}
+        <main className="pt-24 lg:pt-28">
+          {/* Breadcrumb */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Breadcrumb items={breadcrumbItems} />
+          </div>
 
-        {/* Page Header */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-semibold text-blaupunkt-dark font-myriad mb-6 text-center">
-            All Products
-          </h1>
+          {/* Page Header */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <h1 className="text-3xl sm:text-4xl font-semibold text-blaupunkt-dark font-myriad mb-6 text-center">
+              All Products
+            </h1>
 
-          {/* Search Bar */}
-          <SearchBar
+            {/* Search Bar */}
+            <SearchBar
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
           />
@@ -234,6 +242,7 @@ const Products = () => {
         </div>
       </main>
     </div>
+    </>
   )
 }
 

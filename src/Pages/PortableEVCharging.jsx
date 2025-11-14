@@ -12,6 +12,7 @@ import {
   portableEvChargingProductImages
 } from '../Data/index.js'
 import { portableEvChargingData, portableEvChargingConfig } from '../Data/PortableEVCharging/index.js'
+import SEO from '../Components/Common/SEO'
 
 const PortableEVCharging = () => {
   // Get data from Entirepagedata
@@ -34,7 +35,15 @@ const PortableEVCharging = () => {
   )
 
   return (
-    <div>      <HeroSection
+    <>
+      <SEO 
+        title="Portable EV Charging - Blaupunkt Mobile Charging Solutions"
+        description="Portable EV charging solutions from Blaupunkt. Convenient mobile charging for electric vehicles, perfect for on-the-go and emergency charging."
+        keywords="portable EV charger, mobile EV charging, portable charging station, emergency EV charging"
+        canonical="/portable-ev-charging"
+      />
+      <div>
+      <HeroSection
         title={title}
         description={description}
         breadcrumbs={breadcrumbs}
@@ -86,6 +95,7 @@ const PortableEVCharging = () => {
         downloadData={portableEvChargingConfig.downloads}
       />
     </div>
+    </>
   )
 }
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { companyPageImgs } from '../Data/assets.js'
 import Breadcrumb from '../Components/Common/Breadcrumb'
 import { createSimpleBreadcrumbs } from '../Data/Common/utilities'
+import SEO from '../Components/Common/SEO'
 
 const Company = () => {
   const breadcrumbItems = createSimpleBreadcrumbs('Company')
@@ -59,7 +60,14 @@ const Company = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen w-full">
+    <>
+      <SEO 
+        title="About Blaupunkt - Company History & Legacy Since 1923"
+        description="Discover Blaupunkt's rich history from 1923 to today. From pioneering radio technology to leading EV charging solutions, explore our legacy of innovation and quality."
+        keywords="Blaupunkt history, company legacy, EV charging company, about Blaupunkt, brand heritage, innovation"
+        canonical="/company"
+      />
+      <div className="bg-white min-h-screen w-full">
       {/* Mobile Layout */}
       <div className="block lg:hidden bg-white w-full relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
@@ -395,6 +403,7 @@ const Company = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

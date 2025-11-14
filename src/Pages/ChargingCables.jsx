@@ -7,6 +7,7 @@ import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'
 import Models from '../Components/CommonPages/Models.jsx'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
+import SEO from '../Components/Common/SEO'
 
 const ChargingCables = () => {
   // Get data from Entirepagedata
@@ -24,7 +25,14 @@ const ChargingCables = () => {
     alt: thumb.alt
   }))
   return (
-    <div>
+    <>
+      <SEO 
+        title="EV Charging Cables - Blaupunkt Premium Charging Solutions"
+        description="High-quality EV charging cables from Blaupunkt. Type 1, Type 2, and CCS connectors for reliable and safe electric vehicle charging."
+        keywords="EV charging cables, Type 2 cables, Type 1 cables, CCS cables, electric vehicle cables"
+        canonical="/charging-cables"
+      />
+      <div>
       <HeroSection
         title={title}
         description={description}
@@ -58,7 +66,8 @@ const ChargingCables = () => {
         productCategory='chargingCables'
         downloadData={chargingCablesConfig.downloads}
       />
-    </div>
+      </div>
+    </>
   )
 }
 

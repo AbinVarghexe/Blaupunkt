@@ -4,6 +4,7 @@ import { Servicepage } from '../Data/assets.js'
 import ImageHeader from '../Components/Common/ImageHeader'
 import Breadcrumb from '../Components/Common/Breadcrumb'
 import { createSimpleBreadcrumbs } from '../Data/Common/utilities'
+import SEO from '../Components/Common/SEO'
 
 const Services = () => {
   const breadcrumbItems = createSimpleBreadcrumbs('Services')
@@ -37,7 +38,14 @@ const Services = () => {
   ]
 
   return (
-    <div className='bg-white relative w-full py-8'>
+    <>
+      <SEO 
+        title="Services - Blaupunkt EV Charging Solutions | Installation & Support"
+        description="Comprehensive EV charging services from Blaupunkt. Professional installation, maintenance, and ongoing support for your electric vehicle charging solutions."
+        keywords="EV charging services, installation, maintenance, support, Blaupunkt services, EV charger installation, technical support"
+        canonical="/services"
+      />
+      <div className='bg-white relative w-full py-8'>
       {/* Breadcrumb */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <Breadcrumb items={breadcrumbItems} />
@@ -162,7 +170,8 @@ const Services = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 
