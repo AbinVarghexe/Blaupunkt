@@ -11,6 +11,7 @@ import FiltersContainer from '../Components/Products/FiltersContainer'
 import ProductGrid from '../Components/Products/ProductGrid'
 import Pagination from '../Components/Products/Pagination'
 import { filterProducts, sortProducts } from '../Components/Products/filterUtils'
+import SEO from '../Components/Common/SEO'
 
 /**
  * Products Page - Main product listing page with filtering and sorting
@@ -159,8 +160,14 @@ const Products = () => {
   const breadcrumbItems = createSimpleBreadcrumbs('Products')
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <>
+      <SEO 
+        title="EV Charging Products - Blaupunkt Electric Vehicle Chargers"
+        description="Browse our complete range of electric vehicle charging products including charging stations, DC fast chargers, charging cables, and portable EV chargers from Blaupunkt."
+        keywords="EV charging products, electric vehicle chargers, DC fast charger, charging cables, portable EV charger, home charging station, commercial EV charger"
+      />
+      <div className="min-h-screen bg-white">
+        <Navbar />
 
       {/* Main Content */}
       <main className="pt-24 lg:pt-28">
@@ -234,6 +241,7 @@ const Products = () => {
         </div>
       </main>
     </div>
+    </>
   )
 }
 

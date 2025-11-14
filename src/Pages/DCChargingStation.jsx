@@ -12,6 +12,7 @@ import {
   dcChargingStationImages
 } from '../Data/index.js'
 import { dcChargingStationData, dcChargingStationConfig } from '../Data/DCChargingStation/index.js'
+import SEO from '../Components/Common/SEO'
 
 const DCChargingStation = () => {
   // Get data from Entirepagedata
@@ -32,9 +33,15 @@ const DCChargingStation = () => {
   }))
 
   return (
-    <div>
-      {' '}
-      <HeroSection
+    <>
+      <SEO 
+        title="DC Charging Station - Blaupunkt Fast DC EV Chargers"
+        description="High-power DC charging stations from Blaupunkt for commercial and public use. Fast and efficient electric vehicle charging with advanced safety features."
+        keywords="DC charging station, DC fast charger, commercial EV charger, public charging station, fast EV charging, DC charger"
+      />
+      <div>
+        {' '}
+        <HeroSection
         title={title}
         description={description}
         breadcrumbs={breadcrumbs}
@@ -79,6 +86,7 @@ const DCChargingStation = () => {
         downloadData={dcChargingStationConfig.downloads}
       />
     </div>
+    </>
   )
 }
 

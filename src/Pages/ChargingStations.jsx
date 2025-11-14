@@ -9,6 +9,7 @@ import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import ChargingStationModels from '../Components/CommonPages/ChargingStationModels.jsx'
 import { Entirepagedata, chargingStationProductImages } from '../Data/index.js'
 import { chargingStationsConfig } from '../Data/ChargingStations/index.js'
+import SEO from '../Components/Common/SEO'
 
 const ChargingStations = () => {
   // Get data from Entirepagedata
@@ -26,8 +27,14 @@ const ChargingStations = () => {
     alt: thumb.alt
   }))
   return (
-    <div>
-      <HeroSection
+    <>
+      <SEO 
+        title="EV Charging Stations - Blaupunkt Electric Vehicle Charging Solutions"
+        description="Premium EV charging stations from Blaupunkt for home and commercial use. Smart, safe, and efficient electric vehicle charging solutions with various power outputs."
+        keywords="EV charging station, home EV charger, commercial charging station, smart EV charger, wall-mounted charger, electric vehicle station"
+      />
+      <div>
+        <HeroSection
         title={title}
         description={description}
         breadcrumbs={breadcrumbs}
@@ -72,6 +79,7 @@ const ChargingStations = () => {
         downloadData={chargingStationsConfig.downloads}
       />
     </div>
+    </>
   )
 }
 
