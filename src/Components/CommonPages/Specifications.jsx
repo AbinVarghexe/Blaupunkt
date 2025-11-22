@@ -139,6 +139,7 @@ const Specifications = ({ productImage, category }) => {
                 src={imageToDisplay}
                 alt='Product Specifications'
                 className='w-full object-cover rounded-xl hidden'
+                loading='lazy'
                 style={{
                   height: specificationsInfo.imageHeight.spec?.mobile || '200px'
                 }}
@@ -147,6 +148,7 @@ const Specifications = ({ productImage, category }) => {
                 src={imageToDisplay}
                 alt='Product Specifications'
                 className= 'w-full object-cover rounded-xl  hidden lg:block'
+                loading='lazy'
                 style={{
                   height: specificationsInfo.imageHeight.spec?.desktop || '500px'
                 }}

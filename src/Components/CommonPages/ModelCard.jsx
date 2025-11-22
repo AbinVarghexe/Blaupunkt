@@ -28,6 +28,9 @@ const ModelCard = ({
                 src={image}
                 alt={`${modelCode} charging cable`}
                 className='w-full h-full object-cover rounded-lg'
+                loading='lazy'
+                width='320'
+                height='320'
               />
             ) : (
               // Default charging cable illustration

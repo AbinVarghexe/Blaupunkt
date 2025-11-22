@@ -19,6 +19,9 @@ const ChargingCableCard = ({
             src={image}
             alt={`${modelCode} charging cable`}
             className="w-full h-full object-contain max-w-[200px] max-h-[200px]"
+            loading='lazy'
+            width='200'
+            height='200'
           />
         ) : (
           // Default placeholder for charging cable

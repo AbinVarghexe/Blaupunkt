@@ -7,21 +7,21 @@
 
 // Service Page
 //================================================================================
-import ServicesPageImg from "../assets/Images/ServicesPage/ServicesPage.png";
-import Mainbg from "../assets/Images/ServicesPage/Mainbg.png";
-import Installbg from "../assets/Images/ServicesPage/Installbg.png";
-import Chargbg from "../assets/Images/ServicesPage/Chargbg.png";
+import ServicesPageImg from "../assets/Images/ServicesPage/ServicesPage.webp";
+import Mainbg from "../assets/Images/ServicesPage/Mainbg.webp";
+import Installbg from "../assets/Images/ServicesPage/Installbg.webp";
+import Chargbg from "../assets/Images/ServicesPage/Chargbg.webp";
 
 // Company Page Images
 //================================================================================
-import picture1 from "../assets/Images/companyPage/Picture1.png";
-import picture2 from "../assets/Images/companyPage/Picture2.png";
-import picture3 from "../assets/Images/companyPage/Picture3.png";
-import picture6 from "../assets/Images/companyPage/Picture6.png";
-import picture7 from "../assets/Images/companyPage/Picture7.png";
-import picture12 from "../assets/Images/companyPage/Picture12.png";
-import picture13 from "../assets/Images/companyPage/Picture13.png";
-import t2T2 from "../assets/Images/companyPage/T2-T2.png";
+import picture1 from "../assets/Images/companyPage/Picture1.webp";
+import picture2 from "../assets/Images/companyPage/Picture2.webp";
+import picture3 from "../assets/Images/companyPage/Picture3.webp";
+import picture6 from "../assets/Images/companyPage/Picture6.webp";
+import picture7 from "../assets/Images/companyPage/Picture7.webp";
+import picture12 from "../assets/Images/companyPage/Picture12.webp";
+import picture13 from "../assets/Images/companyPage/Picture13.webp";
+import t2T2 from "../assets/Images/companyPage/T2-T2.webp";
 
 export const Servicepage = {
   ServicesPageImg,

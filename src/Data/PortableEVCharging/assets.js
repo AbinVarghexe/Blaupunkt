@@ -5,18 +5,18 @@
 // =============================================================================
 
 // Import Portable EV Charging Images
-import portableEvChargingUrl from '../../assets/Images/CatImages/Portable_EV_Charging.png'
-import portEvPd1 from '../../assets/Images/pdImages/PortEvPd1.png'
+import portableEvChargingUrl from '../../assets/Images/CatImages/Portable_EV_Charging.webp'
+import portEvPd1 from '../../assets/Images/pdImages/PortEvPd1.webp'
 
 // Import Portable EV Charging Images
-import portEvMid1 from '../../assets/Images/PortEvCable/PortEvMid1.png'
-import portEvMid2 from '../../assets/Images/PortEvCable/PortEvMid2.png'
-import portEvMidSpec from '../../assets/Images/PortEvCable/PortEvMidSpec.png'
-import PortThumb1 from '../../assets/Images/PortEvCable/Thumb-1.png'
-import PortThumb2 from '../../assets/Images/PortEvCable/Thumb-2.png'
-import PortThumb3 from '../../assets/Images/PortEvCable/Thumb-3.png'
-import PortThumb4 from '../../assets/Images/PortEvCable/Thumb-4.png'
-import PortThumb5 from '../../assets/Images/PortEvCable/Thumb-5.png'
+import portEvMid1 from '../../assets/Images/PortEvCable/PortEvMid1.webp'
+import portEvMid2 from '../../assets/Images/PortEvCable/PortEvMid2.webp'
+import portEvMidSpec from '../../assets/Images/PortEvCable/PortEvMidSpec.webp'
+import PortThumb1 from '../../assets/Images/PortEvCable/Thumb-1.webp'
+import PortThumb2 from '../../assets/Images/PortEvCable/Thumb-2.webp'
+import PortThumb3 from '../../assets/Images/PortEvCable/Thumb-3.webp'
+import PortThumb4 from '../../assets/Images/PortEvCable/Thumb-4.webp'
+import PortThumb5 from '../../assets/Images/PortEvCable/Thumb-5.webp'
 
 // Main portable EV charging images
 export const portableEvChargingImages = {
@@ -96,12 +96,12 @@ export const PORTABLE_EV_CHARGING_IMAGES = {
 
 // Image paths for backward compatibility
 export const IMAGE_PATHS = {
-  main: '/src/assets/Images/CatImages/Portable_EV_Charging.png',
-  portEvPd1: '/src/assets/Images/pdImages/PortEvPd1.png',
-  cable1: '/src/assets/Images/PortEvCable/PortEvMid1.png',
-  cable2: '/src/assets/Images/PortEvCable/PortEvMid2.png',
-  cable3: '/src/assets/Images/PortEvCable/PortEvMidSpec.png',
-  thumb1: '/src/assets/Images/PortEvCable/Thumb-1.png',
-  thumb2: '/src/assets/Images/PortEvCable/Thumb-2.png',
-  thumb3: '/src/assets/Images/PortEvCable/Thumb-3.png'
+  main: '/src/assets/Images/CatImages/Portable_EV_Charging.webp',
+  portEvPd1: '/src/assets/Images/pdImages/PortEvPd1.webp',
+  cable1: '/src/assets/Images/PortEvCable/PortEvMid1.webp',
+  cable2: '/src/assets/Images/PortEvCable/PortEvMid2.webp',
+  cable3: '/src/assets/Images/PortEvCable/PortEvMidSpec.webp',
+  thumb1: '/src/assets/Images/PortEvCable/Thumb-1.webp',
+  thumb2: '/src/assets/Images/PortEvCable/Thumb-2.webp',
+  thumb3: '/src/assets/Images/PortEvCable/Thumb-3.webp'
 }

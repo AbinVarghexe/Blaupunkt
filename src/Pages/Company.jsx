@@ -90,11 +90,17 @@ const Company = () => {
                 className="w-[97px] h-[125px]"
                 alt="T t"
                 src={companyPageImgs.t2T2}
+                loading='lazy'
+                width='97'
+                height='125'
               />
               <img
                 className="w-28 h-[125px]"
                 alt="Picture"
                 src={companyPageImgs.picture2}
+                loading='lazy'
+                width='112'
+                height='125'
               />
             </div>
 
@@ -112,6 +118,9 @@ const Company = () => {
               <img
                 className="w-full max-w-[320px] h-[275px] object-cover"
                 alt="Historical image"
+                loading='lazy'
+                width='320'
+                height='275'
                 src={companyPageImgs.picture3}
               />
             </div>
@@ -136,6 +145,9 @@ const Company = () => {
                     className="w-full h-36 object-cover"
                     alt="Picture"
                     src={companyPageImgs.picture1}
+                    loading='lazy'
+                    width='320'
+                    height='144'
                   />
                 )}
               </section>
@@ -163,10 +175,16 @@ const Company = () => {
                       className="w-[137px] h-[185px] object-cover"
                       alt="Picture"
                       src={companyPageImgs.picture7}
+                      loading='lazy'
+                      width='137'
+                      height='185'
                     />
                     <img
                       className="w-[137px] h-[185px] object-cover"
                       alt="Picture"
+                      loading='lazy'
+                      width='137'
+                      height='185'
                       src={companyPageImgs.picture6}
                     />
                   </div>
@@ -230,12 +248,18 @@ const Company = () => {
             className="absolute w-[397px] h-[507px] top-[241px] lg:top-[249px] left-4 lg:left-8 xl:left-[209px]"
             alt="Historical Blaupunkt image"
             src={companyPageImgs.t2T2}
+            loading='lazy'
+            width='397'
+            height='507'
           />
 
           <img
             className="absolute w-[513px] h-[477px] top-[587px] lg:top-[595px] right-4 lg:right-8 xl:right-[209px]"
             alt="Historical image"
             src={companyPageImgs.picture3}
+            loading='lazy'
+            width='513'
+            height='477'
           />
 
           {/* Timeline Section - 1923 */}
@@ -244,6 +268,9 @@ const Company = () => {
               className="absolute w-[97px] h-[108px] top-0 left-[373px]"
               alt="Picture"
               src={companyPageImgs.picture2}
+              loading='lazy'
+              width='97'
+              height='108'
             />
 
             <div className="absolute w-[519px] h-[202px] top-[97px] left-0">
@@ -335,12 +362,18 @@ const Company = () => {
             className="absolute w-[397px] h-[537px] top-[1181px] lg:top-[1189px] left-4 lg:left-8 xl:left-[209px]"
             alt="Historical Blaupunkt picture"
             src={companyPageImgs.picture6}
+            loading='lazy'
+            width='397'
+            height='537'
           />
 
           <img
             className="absolute w-[395px] h-48 top-[793px] lg:top-[801px] left-4 lg:left-8 xl:left-[211px]"
             alt="Historical picture"
             src={companyPageImgs.picture1}
+            loading='lazy'
+            width='395'
+            height='192'
           />
 
           {/* Since 2009 Section */}
@@ -364,6 +397,9 @@ const Company = () => {
             <img
               className="absolute w-[609px] h-64 top-[42px] right-0 lg:right-8 xl:right-0 xl:left-[421px]"
               alt="Modern Blaupunkt products"
+              loading='lazy'
+              width='609'
+              height='256'
               src={companyPageImgs.picture12}
             />
           </section>
@@ -373,12 +409,18 @@ const Company = () => {
             className="absolute w-[177px] h-[271px] top-[1763px] lg:top-[1771px] left-4 lg:left-8 xl:left-[217px]"
             alt="Product picture"
             src={companyPageImgs.picture13}
+            loading='lazy'
+            width='177'
+            height='271'
           />
 
           <img
             className="absolute w-[149px] h-[216px] top-[1818px] lg:top-[1826px] left-[220px] lg:left-[280px] xl:left-[457px]"
             alt="Product picture"
             src={companyPageImgs.picture7}
+            loading='lazy'
+            width='149'
+            height='216'
           />
 
           {/* Modern Era Description */}

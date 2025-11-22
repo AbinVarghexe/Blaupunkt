@@ -90,6 +90,7 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                   src={overviewData.IdealandFeaturesImage}
                   alt='Features and Ideal Use Cases'
                   className='w-full h-auto rounded-lg object-cover'
+                  loading='lazy'
                   style={{
                     maxHeight: '500px',
                     minHeight: '400px'

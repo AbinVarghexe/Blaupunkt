@@ -57,6 +57,7 @@ const OverviewSection = ({ overviewData }) => {
               src={overviewData.image}
               alt='Overview'
               className='max-w-full h-auto rounded-lg shadow-lg'
+              loading='lazy'
             />
           </div>
         )}
@@ -70,6 +71,7 @@ const OverviewSection = ({ overviewData }) => {
               src={overviewData.image}
               alt='Product Overview'
               className='w-full h-full rounded-lg object-cover'
+              loading='lazy'
               style={{
                 maxHeight: overviewData.imageHeight?.overview?.desktop || '500px',
                 minHeight: overviewData.imageMinHeight?.overview?.desktop || '400px'

@@ -82,6 +82,8 @@ const HeroSection = ({
                   alt={currentAltText}
                   className={`w-full h-full ${mainImageObjectFit} transition-all duration-700 ease-out hover:scale-105`}
                   style={{ animation: 'fadeIn 0.8s ease-out' }}
+                  width='800'
+                  height='500'
                 />
                 <style jsx='true'>{`
                   @keyframes fadeIn {
@@ -118,6 +120,9 @@ const HeroSection = ({
                               ? 'border-2 border-blaupunkt-primary-darker shadow-lg'
                               : 'opacity-80 hover:opacity-100 hover:shadow-lg'
                           }`}
+                          loading='lazy'
+                          width='60'
+                          height='60'
                           onClick={() => setActiveThumbIndex(index)}
                           onKeyDown={e =>
                             e.key === 'Enter' && setActiveThumbIndex(index)
@@ -153,6 +158,9 @@ const HeroSection = ({
                               ? 'border-2 border-blaupunkt-primary-darker shadow-lg'
                               : 'opacity-80 hover:opacity-100 hover:shadow-lg'
                           }`}
+                            loading='lazy'
+                            width='60'
+                            height='60'
                             onClick={() => setActiveThumbIndex(index)}
                             onKeyDown={e =>
                               e.key === 'Enter' && setActiveThumbIndex(index)

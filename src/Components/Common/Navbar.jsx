@@ -78,7 +78,7 @@ const Navbar = () => {
         {/* Logo - Center */}
         <div className='h-auto w-42 cursor-pointer flex-shrink-0'>
           <Link to='/'>
-            <img src={logos.main} alt='Blaupunkt' />
+            <img src={logos.main} alt='Blaupunkt' width='168' height='24' />
           </Link>
         </div>
 
@@ -133,7 +133,7 @@ const Navbar = () => {
         <div className='h-auto w-40 md:w-24 cursor-pointer'>
           {/* Logo */}
           <Link to='/'>
-            <img src={logos.main} alt='Blaupunkt' />
+            <img src={logos.main} alt='Blaupunkt' width='160' height='24' />
           </Link>
         </div>
         

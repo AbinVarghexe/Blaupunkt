@@ -5,22 +5,22 @@
 // =============================================================================
 
 // Import DC Super Fast Charging Station Images
-import dcSuperFastChargingUrl from '../../assets/Images/CatImages/DC_Fast_Charging_Station.png'
-import fastPd1 from '../../assets/Images/pdImages/Fastpd1.png'
-import fastPd2 from '../../assets/Images/pdImages/Fastpd2.png'
-import fastPd3 from '../../assets/Images/pdImages/Fastpd3.png'
-import fastPd4 from '../../assets/Images/pdImages/Fastpd4.png'
-import fastPd5 from '../../assets/Images/pdImages/Fastpd5.png'
-import fastPd6 from '../../assets/Images/pdImages/Fastpd6.png'
+import dcSuperFastChargingUrl from '../../assets/Images/CatImages/DC_Fast_Charging_Station.webp'
+import fastPd1 from '../../assets/Images/pdImages/Fastpd1.webp'
+import fastPd2 from '../../assets/Images/pdImages/Fastpd2.webp'
+import fastPd3 from '../../assets/Images/pdImages/Fastpd3.webp'
+import fastPd4 from '../../assets/Images/pdImages/Fastpd4.webp'
+import fastPd5 from '../../assets/Images/pdImages/Fastpd5.webp'
+import fastPd6 from '../../assets/Images/pdImages/Fastpd6.webp'
 
 // Import DC Super Fast Charging Station Images
-import fastMid from '../../assets/Images/DCFastChrg/Fast-mid.png'
-import fastHigh from '../../assets/Images/DCFastChrg/FastHigh.png'
-import fastMid2 from '../../assets/Images/DCFastChrg/FastMid-2.png'
-import fastSpec from '../../assets/Images/DCFastChrg/FastSpec.png'
-import fastThumb1 from '../../assets/Images/DCFastChrg/Thumb-1.png'
-import fastThumb2 from '../../assets/Images/DCFastChrg/Thumb-2.png'
-import fastThumb3 from '../../assets/Images/DCFastChrg/Thumb-3.png'
+import fastMid from '../../assets/Images/DCFastChrg/Fast-mid.webp'
+import fastHigh from '../../assets/Images/DCFastChrg/FastHigh.webp'
+import fastMid2 from '../../assets/Images/DCFastChrg/FastMid-2.webp'
+import fastSpec from '../../assets/Images/DCFastChrg/FastSpec.webp'
+import fastThumb1 from '../../assets/Images/DCFastChrg/Thumb-1.webp'
+import fastThumb2 from '../../assets/Images/DCFastChrg/Thumb-2.webp'
+import fastThumb3 from '../../assets/Images/DCFastChrg/Thumb-3.webp'
 
 // Main DC super fast charging station images
 export const dcSuperFastChargingStationImages = {
@@ -123,15 +123,15 @@ export const DC_SUPER_FAST_CHARGING_STATION_IMAGES = {
 
 // Image paths for backward compatibility
 export const IMAGE_PATHS = {
-  main: '/src/assets/Images/CatImages/DC_Fast_Charging_Station.png',
-  fastMid: '/src/assets/Images/DCFastChrg/Fast-mid.png',
-  fastHigh: '/src/assets/Images/DCFastChrg/FastHigh.png',
-  fastMid2: '/src/assets/Images/DCFastChrg/FastMid-2.png',
-  fastSpec: '/src/assets/Images/DCFastChrg/FastSpec.png',
-  fastPd1: '/src/assets/Images/pdImages/Fastpd1.png',
-  fastPd2: '/src/assets/Images/pdImages/Fastpd2.png',
-  fastPd3: '/src/assets/Images/pdImages/Fastpd3.png',
-  fastPd4: '/src/assets/Images/pdImages/Fastpd4.png',
-  fastPd5: '/src/assets/Images/pdImages/Fastpd5.png',
-  fastPd6: '/src/assets/Images/pdImages/Fastpd6.png'
+  main: '/src/assets/Images/CatImages/DC_Fast_Charging_Station.webp',
+  fastMid: '/src/assets/Images/DCFastChrg/Fast-mid.webp',
+  fastHigh: '/src/assets/Images/DCFastChrg/FastHigh.webp',
+  fastMid2: '/src/assets/Images/DCFastChrg/FastMid-2.webp',
+  fastSpec: '/src/assets/Images/DCFastChrg/FastSpec.webp',
+  fastPd1: '/src/assets/Images/pdImages/Fastpd1.webp',
+  fastPd2: '/src/assets/Images/pdImages/Fastpd2.webp',
+  fastPd3: '/src/assets/Images/pdImages/Fastpd3.webp',
+  fastPd4: '/src/assets/Images/pdImages/Fastpd4.webp',
+  fastPd5: '/src/assets/Images/pdImages/Fastpd5.webp',
+  fastPd6: '/src/assets/Images/pdImages/Fastpd6.webp'
 }

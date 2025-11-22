@@ -103,6 +103,9 @@ const Footer = () => {
                 src={whiteLogo}
                 alt='Blaupunkt Logo'
                 className='h-4 w-auto'
+                loading='lazy'
+                width='120'
+                height='16'
               />
             </Link>
           </div>
@@ -148,6 +151,9 @@ const Footer = () => {
                 src={whiteLogo}
                 alt='Blaupunkt Logo'
                 className='h-5 w-auto'
+                loading='lazy'
+                width='150'
+                height='20'
               />
             </Link>
           </div>

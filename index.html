@@ -35,6 +35,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
+    <!-- DNS Prefetch & Preconnect for Performance -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    
+    <!-- Preload Critical Assets -->
+    <!-- Preload hero video for faster initial render -->
+    <link rel="preload" as="video" href="/src/assets/Videos/HeoIntro.mp4" type="video/mp4" />
+    
+    <!-- Preload critical fonts if using custom fonts -->
+    <!-- <link rel="preload" as="font" type="font/woff2" href="/fonts/your-font.woff2" crossorigin="anonymous" /> -->
+    
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
