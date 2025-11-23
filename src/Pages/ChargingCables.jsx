@@ -26,13 +26,21 @@ const ChargingCables = () => {
   }))
   return (
     <>
-      <SEO 
-        title="EV Charging Cables - Blaupunkt Premium Charging Solutions"
-        description="High-quality EV charging cables from Blaupunkt. Type 1, Type 2, and CCS connectors for reliable and safe electric vehicle charging."
-        keywords="EV charging cables, Type 2 cables, Type 1 cables, CCS cables, electric vehicle cables"
-        canonical="/charging-cables"
+    <SEO 
+        title="EV Charging Cables UAE | Type 2 & 22kW Cables"
+        description="Buy EV charging cables in the UAE. Type 2 and 22kW charging cables compatible with all major EV brands. High-quality Blaupunkt cables."
+        keywords="EV charging cables UAE, Type 2 EV cables, 22kW charging cables, EV cables for all brands, Blaupunkt charging cables"
+        canonical="https://blaupunkt-ev.com/charging-cables"
+        ogTitle="EV Charging Cables UAE"
+        ogDescription="Premium Type 2 and high-power EV charging cables."
+        twitterTitle="EV Charging Cables UAE"
+        twitterDescription="Premium Type 2 and high-power EV charging cables."
+        ogImage={chargingCableProductImages.specifications}
       />
       <div>
+      <h1 className="sr-only">EV Charging Cables in UAE — Type 2 & 22kW</h1>
+      <h2 className="sr-only">Type 2 charging cables compatible with major EV brands</h2>
+      <h2 className="sr-only">High-power 22kW cables for faster AC charging</h2>
       <HeroSection
         title={title}
         description={description}

@@ -21,11 +21,11 @@ const HeroSection = () => {
         {/* Breadcrumb Navigation */}{' '}
         <div className='flex items-center justify-center mb-12 lg:mb-16'>
           <div className='flex items-center gap-2 text-sm font-myriad'>
-            <span className='text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors cursor-pointer'>
+            <span className='text-blaupunkt-primary-darker hover:text-blaupunkt-primary transition-colors cursor-pointer'>
               Home
             </span>
-            <span className='text-blaupunkt-secondary-light'>/</span>
-            <span className='text-blaupunkt-secondary font-medium'>
+            <span className='text-blaupunkt-gray'>/</span>
+            <span className='text-blaupunkt-primary-darker font-medium'>
               Electric Vehicle Charging Equipment
             </span>
           </div>
@@ -52,6 +52,7 @@ const HeroSection = () => {
               muted
               playsInline
               disablePictureInPicture
+              preload='metadata'
               className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ease-in-out ${
                 showVideo ? 'opacity-100' : 'opacity-0'
               }`}

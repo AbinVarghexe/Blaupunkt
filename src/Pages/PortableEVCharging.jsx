@@ -37,12 +37,20 @@ const PortableEVCharging = () => {
   return (
     <>
       <SEO 
-        title="Portable EV Charging - Blaupunkt Mobile Charging Solutions"
-        description="Portable EV charging solutions from Blaupunkt. Convenient mobile charging for electric vehicles, perfect for on-the-go and emergency charging."
-        keywords="portable EV charger, mobile EV charging, portable charging station, emergency EV charging"
-        canonical="/portable-ev-charging"
+        title="Portable EV Charger UAE | Mobile & Emergency Chargers"
+        description="Get portable EV chargers in the UAE. Safe, compact and ideal for travel or emergency charging. Compatible with multiple EV brands."
+        keywords="portable EV charger UAE, mobile EV charger, emergency EV charging UAE, compact EV charger, Blaupunkt portable charger"
+        canonical="https://blaupunkt-ev.com/portable-ev-charging"
+        ogTitle="Portable EV Charger UAE"
+        ogDescription="Compact mobile chargers for emergencies and travel."
+        twitterTitle="Portable EV Charger UAE"
+        twitterDescription="Compact mobile chargers for emergencies and travel."
+        ogImage={portableEvChargingProductImages.specifications}
       />
       <div>
+      <h1 className="sr-only">Portable EV Charger UAE — Mobile & Emergency Chargers</h1>
+      <h2 className="sr-only">Compact, safe portable EV chargers for travel</h2>
+      <h2 className="sr-only">Emergency charging solutions compatible with multiple brands</h2>
       <HeroSection
         title={title}
         description={description}

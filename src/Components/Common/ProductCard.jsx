@@ -52,7 +52,7 @@ const ProductCard = ({
             </span>
           </div>
           {/* Full Product Title */}
-          <h3
+          <h2
             className="mb-2 sm:mb-3"
             style={{
               fontFamily: '"Myriad Pro", Arial, sans-serif',
@@ -65,7 +65,7 @@ const ProductCard = ({
             }}
           >
             {title || "EV Charging Cables"}
-          </h3>
+          </h2>
           {/* Product Specifications */}
           <p
             className="mb-0"

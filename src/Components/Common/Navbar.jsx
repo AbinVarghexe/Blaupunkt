@@ -86,7 +86,11 @@ const Navbar = () => {
         <div className='flex items-center space-x-6 flex-1 justify-end'>
           {/* Search Bar */}
           <form onSubmit={handleSearch} className='flex items-center bg-blaupunkt-secondary-light rounded-full px-4 py-2'>
-            <button type="submit" className="mr-3">
+            <button
+              type="submit"
+              className="mr-3"
+              aria-label="Search products"
+            >
               <FiSearch className='w-4 h-4 text-blaupunkt-primary-darker hover:text-blaupunkt-primary transition-colors cursor-pointer' />
             </button>
             <input
@@ -99,10 +103,14 @@ const Navbar = () => {
             />
           </form>
 
-          {/* Menu Button */}
-          <div
+          {/* Menu Button (desktop breakpoint only shows on smaller widths) */}
+          <button
+            type="button"
             className='cursor-pointer lg:hidden flex items-center justify-center w-8 h-8'
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
           >
             <div className='relative w-6 h-6'>
               <span
@@ -121,7 +129,7 @@ const Navbar = () => {
                 }`}
               ></span>
             </div>
-          </div>
+          </button>
         </div>
       </nav>
 
@@ -137,9 +145,13 @@ const Navbar = () => {
           </Link>
         </div>
         
-        <div
+        <button
+          type="button"
           className='cursor-pointer'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <div className='relative w-6 h-4'>
             <span
@@ -153,26 +165,29 @@ const Navbar = () => {
               }`}
             ></span>
           </div>
-        </div>
+        </button>
       </nav>
 
       {/* Full-screen navigation menu */}
       <div
+        id="mobile-menu"
         className={`fixed inset-0 bg-white z-40 transform transition-transform duration-500 ease-in-out overflow-hidden ${
           isMenuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         <div className='flex flex-col items-center justify-center h-full space-y-8 overflow-hidden'>
           {/* Close button */}
-          <div
+          <button
+            type="button"
             className='absolute top-8 right-8 md:top-12 md:right-12 cursor-pointer'
             onClick={() => setIsMenuOpen(false)}
+            aria-label="Close navigation menu"
           >
             <div className='relative w-6 h-6'>
               <span className='absolute top-2.5 h-0.5 w-full bg-blaupunkt-primary rotate-45 transition-all duration-300'></span>
               <span className='absolute top-2.5 h-0.5 w-full bg-blaupunkt-primary -rotate-45 transition-all duration-300'></span>
             </div>
-          </div>
+          </button>
 
           {/* Navigation Links */}
           <nav className='flex flex-col items-center space-y-14 text-xl md:text-3xl lg:text-4xl font-normal'>
@@ -191,7 +206,11 @@ const Navbar = () => {
           {/* Search bar */}
           <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2'>
             <form onSubmit={handleSearch} className='flex items-center bg-blaupunkt-secondary-light rounded-full px-4 py-2 w-64'>
-              <button type="submit" className="mr-3">
+              <button
+                type="submit"
+                className="mr-3"
+                aria-label="Search products"
+              >
                 <svg
                   className='w-4 h-4 text-blaupunkt-primary-darker hover:text-blaupunkt-primary transition-colors cursor-pointer'
                   fill='none'

@@ -62,12 +62,20 @@ const Company = () => {
   return (
     <>
       <SEO 
-        title="About Blaupunkt - Company History & Legacy Since 1923"
-        description="Discover Blaupunkt's rich history from 1923 to today. From pioneering radio technology to leading EV charging solutions, explore our legacy of innovation and quality."
-        keywords="Blaupunkt history, company legacy, EV charging company, about Blaupunkt, brand heritage, innovation"
-        canonical="/company"
+        title="EV Charging Solutions UAE | About Blaupunkt"
+        description="Learn about Blaupunkt’s EV charging solutions in the UAE. Trusted German technology for home, commercial, and fast-charging applications."
+        keywords="EV charging solutions UAE, Blaupunkt EV charging, DEWA compliant EV chargers, home EV charging UAE, commercial EV charging UAE, fast charging solutions, German EV technology"
+        canonical="https://blaupunkt-ev.com/company"
+        ogTitle="About Blaupunkt EV Charging"
+        ogDescription="Premium EV charging solutions from Blaupunkt."
+        twitterTitle="About Blaupunkt EV Charging"
+        twitterDescription="Premium EV charging solutions from Blaupunkt."
+        ogImage={companyPageImgs.picture3}
       />
       <div className="bg-white min-h-screen w-full">
+      <h1 className="sr-only">About Blaupunkt — EV Charging Solutions in the UAE</h1>
+      <h2 className="sr-only">Trusted German technology for home and commercial charging</h2>
+      <h2 className="sr-only">DEWA-compliant solutions and certified installations</h2>
       {/* Mobile Layout */}
       <div className="block lg:hidden bg-white w-full relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
@@ -79,7 +87,7 @@ const Company = () => {
               <h1 className="text-[32px] font-semibold text-blaupunkt-dark mb-4 leading-normal">
                 Quality Is In The Name
               </h1>
-              <p className="text-xs font-light text-blaupunkt-secondary">
+              <p className="text-xs font-light text-blaupunkt-primary-darker">
                 Blaupunkt's History In a Nutshell
               </p>
             </div>
@@ -218,7 +226,7 @@ const Company = () => {
             <div className="flex justify-center mb-8 pb-8">
               <Link
                 to="/contact"
-                className="inline-flex flex-col items-center justify-center gap-2.5 px-[27px] py-[11px] rounded-[15px] border-2 border-solid border-blaupunkt-primary text-blaupunkt-primary font-medium hover:bg-blaupunkt-primary hover:text-white transition-colors duration-200"
+                className="inline-flex flex-col items-center justify-center gap-2.5 px-[27px] py-[11px] rounded-[15px] border-2 border-solid border-blaupunkt-primary-darker text-blaupunkt-primary-darker font-medium hover:bg-blaupunkt-primary-darker hover:text-white transition-colors duration-200"
               >
                 Contact Us
               </Link>

@@ -139,7 +139,7 @@ const ChargingStationModels = ({ category }) => {
           <div className='flex flex-row items-center justify-between py-4 relative'>
             {/* Models Title with optional additional text */}
             <div className="flex items-center gap-3">
-              <h1 className='text-4xl font-semibold text-gray-800'>{modelsData.title || 'Models'}</h1>
+              <h2 className='text-4xl font-semibold text-gray-800'>{modelsData.title || 'Models'}</h2>
               {modelsData.additionalText && (
                 <span className='text-lg text-gray-600'>{modelsData.additionalText}</span>
               )}

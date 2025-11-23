@@ -84,7 +84,7 @@ const MobileFilters = ({
                     setConnectorType('All')
                     setPhaseType('All')
                   }}
-                  className='text-sm text-blaupunkt-secondary hover:text-blaupunkt-primary font-myriad underline transition-colors duration-200'
+                  className='text-sm text-blaupunkt-primary-darker hover:text-blaupunkt-primary font-myriad underline transition-colors duration-200'
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

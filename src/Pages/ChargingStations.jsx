@@ -29,12 +29,20 @@ const ChargingStations = () => {
   return (
     <>
       <SEO 
-        title="AC Charging Stations - Blaupunkt EV Charging Solutions"
-        description="Premium AC charging stations from Blaupunkt for residential and commercial use. Smart, efficient, and safe EV charging solutions."
-        keywords="AC charging station, home EV charger, commercial charging, smart EV charger"
-        canonical="/charging-stations"
+        title="Home EV Charging Station UAE | Blaupunkt AC Chargers"
+        description="Install a reliable home EV charging station in the UAE. Blaupunkt offers AC, Wallbox, and residential charging station solutions."
+        keywords="home EV charging station UAE, AC EV charger UAE, Wallbox charger UAE, residential EV charging, Blaupunkt AC chargers"
+        canonical="https://blaupunkt-ev.com/charging-stations"
+        ogTitle="Home EV Charging Station UAE"
+        ogDescription="Reliable AC and Wallbox-style chargers for homes."
+        twitterTitle="Home EV Charging Station UAE"
+        twitterDescription="Reliable AC and Wallbox-style chargers for homes."
+        ogImage={chargingStationProductImages.spec}
       />
       <div>
+      <h1 className="sr-only">Home EV Charging Station UAE — Blaupunkt AC Chargers</h1>
+      <h2 className="sr-only">Wallbox and residential AC charging solutions</h2>
+      <h2 className="sr-only">Safe, reliable home charging installations</h2>
       <HeroSection
         title={title}
         description={description}

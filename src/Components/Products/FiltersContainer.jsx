@@ -30,7 +30,8 @@ const FiltersContainer = ({
       <div className='lg:hidden mb-4 flex justify-end'>
         <motion.button
           onClick={() => setShowMobileFilters(true)}
-          className='border-2 border-blaupunkt-secondary text-blaupunkt-secondary bg-transparent px-4 py-2 rounded-lg font-myriad text-sm font-normal flex items-center gap-2  hover:text-white transition-colors'
+          className='border-2 border-blaupunkt-primary-darker text-blaupunkt-primary-darker bg-transparent px-4 py-2 rounded-lg font-myriad text-sm font-normal flex items-center gap-2  hover:bg-blaupunkt-primary-darker hover:text-white transition-colors'
+          aria-label="Open filters panel"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
         >

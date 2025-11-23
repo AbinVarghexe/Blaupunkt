@@ -183,7 +183,7 @@ const ContactUs = () => {
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight font-inter">Contact Us</h1>
-                    <p className="text-blaupunkt-secondary font-medium text-md">
+                    <p className="text-blaupunkt-primary-darker font-medium text-md">
                         Have questions or need assistance? We're here to help.
                     </p>
                 </div>
@@ -276,15 +276,15 @@ const ContactUs = () => {
                 {/* Office Info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="md:py-8 px-8 flex flex-col items-center md:items-start">
-                        <h3 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">Head Office</h3>
-                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-left">
+                        <h2 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">Head Office</h2>
+                        <div className="space-y-3 text-blaupunkt-primary-darker text-sm text-center md:text-left">
                             <p>BLP EV Systems ApS<br />Ediths Allé 8<br />5250 Odense SV<br />Denmark</p>
                         </div>
                     </div>
 
                     <div className="md:py-8 px-8 flex flex-col items-center md:items-end">
-                        <h3 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">UAE Office</h3>
-                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-right">
+                        <h2 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">UAE Office</h2>
+                        <div className="space-y-3 text-blaupunkt-primary-darker text-sm text-center md:text-right">
                             <p>
                                 BLP EV Systems – FZCO<br />
                                 Building A1, Dubai Digital Park<br />
@@ -292,7 +292,7 @@ const ContactUs = () => {
                                 United Arab Emirates
                             </p>
                         </div>
-                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-right mt-2 font-myriad">
+                        <div className="space-y-3 text-blaupunkt-primary-darker text-sm text-center md:text-right mt-2 font-myriad">
                             <p>
                                 TEL: <a href="tel:+971558882595" className="text-blue-600 hover:underline">+971 55 888 2595</a>
                             </p>

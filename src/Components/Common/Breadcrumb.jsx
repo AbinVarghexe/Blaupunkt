@@ -20,16 +20,16 @@ const Breadcrumb = ({ items = [], className = '' }) => {
         {items.map((item, index) => (
           <React.Fragment key={index}>
             {index > 0 && (
-              <span className='text-blaupunkt-secondary-light font-myriad'>/</span>
+              <span className='text-blaupunkt-gray font-myriad'>/</span>
             )}
             {item.active || index === items.length - 1 ? (
-              <span className='text-blaupunkt-secondary font-myriad whitespace-nowrap'>
+              <span className='text-blaupunkt-primary-darker font-myriad whitespace-nowrap'>
                 {item.text || item.label}
               </span>
             ) : (
               <Link
                 to={item.path || item.href}
-                className='text-blaupunkt-secondary-light font-myriad whitespace-nowrap hover:text-blaupunkt-secondary transition-colors duration-200'
+                className='text-blaupunkt-primary-darker font-myriad whitespace-nowrap hover:text-blaupunkt-primary transition-colors duration-200'
               >
                 {item.text || item.label}
               </Link>

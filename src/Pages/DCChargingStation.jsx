@@ -35,12 +35,20 @@ const DCChargingStation = () => {
   return (
     <>
       <SEO 
-        title="DC Charging Stations - Blaupunkt Fast Charging Solutions"
-        description="High-power DC charging stations from Blaupunkt. Fast and efficient EV charging for commercial and public installations."
-        keywords="DC charging station, fast charging, DC fast charger, commercial EV charging, public charging station"
-        canonical="/dc-charging-station"
+        title="DC Charger UAE | DC Charging Station & Fast Chargers"
+        description="Explore DC chargers for commercial and high-power EV charging in the UAE. Fast DC charging stations with advanced safety and performance."
+        keywords="DC charger UAE, DC charging station UAE, fast DC charger, commercial DC EV charging, high power EV charging UAE"
+        canonical="https://blaupunkt-ev.com/dc-charging-station"
+        ogTitle="DC Charger UAE"
+        ogDescription="Fast and commercial DC charging solutions."
+        twitterTitle="DC Charger UAE"
+        twitterDescription="Fast and commercial DC charging solutions."
+        ogImage={dcChargingStationImages.dcMidSpec}
       />
       <div>
+      <h1 className="sr-only">DC Charger UAE — Commercial & Fast Charging</h1>
+      <h2 className="sr-only">DC fast chargers for commercial applications</h2>
+      <h2 className="sr-only">High-power, reliable DC charging solutions</h2>
       {' '}
       <HeroSection
         title={title}

@@ -40,12 +40,20 @@ const Services = () => {
   return (
     <>
       <SEO 
-        title="Services - Blaupunkt EV Charging Solutions | Installation & Support"
-        description="Comprehensive EV charging services from Blaupunkt. Professional installation, maintenance, and ongoing support for your electric vehicle charging solutions."
-        keywords="EV charging services, installation, maintenance, support, Blaupunkt services, EV charger installation, technical support"
-        canonical="/services"
+        title="EV Charger Installation UAE | Blaupunkt Services"
+        description="Professional EV charger installation for homes and businesses in the UAE. DEWA-approved technicians and certified charging solutions."
+        keywords="EV charger installation UAE, EV charger installer UAE, DEWA approved EV installation, home EV charger installation, commercial EV charger installation, Blaupunkt services"
+        canonical="https://blaupunkt-ev.com/services"
+        ogTitle="EV Charger Installation Services"
+        ogDescription="Certified home and commercial EV charger installation."
+        twitterTitle="EV Charger Installation Services"
+        twitterDescription="Certified home and commercial EV charger installation."
+        ogImage={Servicepage.ServicesPageImg}
       />
       <div className='bg-white relative w-full py-8'>
+      <h1 className="sr-only">EV Charger Installation UAE — Blaupunkt Services</h1>
+      <h2 className="sr-only">Home EV charger installation by certified technicians</h2>
+      <h2 className="sr-only">Commercial EV charger installation and DEWA approvals</h2>
       {/* Breadcrumb */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <Breadcrumb items={breadcrumbItems} />
@@ -58,7 +66,7 @@ const Services = () => {
 
       {/* Subtitle */}
       <div className='container mx-auto px-6 mb-8 md:mb-25'>
-        <p className='text-blaupunkt-primary text-sm md:text-lg text-center max-w-[600px] mx-auto'>
+        <p className='text-blaupunkt-primary-darker text-sm md:text-lg text-center max-w-[600px] mx-auto'>
           From reliable EV chargers to expert installation and ongoing support,
           Blaupunkt offers end-to-end solutions to power your electric journey.
         </p>
@@ -74,6 +82,7 @@ const Services = () => {
                 src={service.image}
                 alt={service.title}
                 className='w-full h-full object-cover'
+                loading='lazy'
               />
               <div className='absolute inset-0 bg-black/40 flex items-center justify-center'>
                 <h2 className='text-xl font-semibold text-white'>
@@ -88,11 +97,11 @@ const Services = () => {
                 {service.description}
               </p>
               <div className='flex gap-2 py-4'>
-                <Link to='/contact' className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                <Link to='/contact' className='border-2 border-blaupunkt-primary-darker rounded-xl px-4 py-2 text-blaupunkt-primary-darker font-medium text-md cursor-pointer hover:bg-blaupunkt-primary-darker hover:text-white transition-colors'>
                   Contact
                 </Link>
                 {service.showLearnMore && (
-                  <Link to='/' className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                  <Link to='/' className='border-2 border-blaupunkt-primary-darker rounded-xl px-4 py-2 text-blaupunkt-primary-darker font-medium text-md cursor-pointer hover:bg-blaupunkt-primary-darker hover:text-white transition-colors'>
                     Learn More
                   </Link>
                 )}
@@ -116,11 +125,11 @@ const Services = () => {
                 {serviceItems[0].description}
               </p>
               <div className='flex gap-3 py-4'>
-                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-primary-darker rounded-xl px-5 py-2 text-blaupunkt-primary-darker font-medium text-md cursor-pointer hover:bg-blaupunkt-primary-darker hover:text-white transition-colors'>
                   Contact
                 </Link>
                 {serviceItems[0].showLearnMore && (
-                  <Link to='/' className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-1.5 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                  <Link to='/' className='border-2 border-blaupunkt-primary-darker rounded-xl px-4 py-1.5 text-blaupunkt-primary-darker font-medium text-md cursor-pointer hover:bg-blaupunkt-primary-darker hover:text-white transition-colors'>
                     Learn More
                   </Link>
                 )}
@@ -136,7 +145,7 @@ const Services = () => {
                 {serviceItems[0].description}
               </p>
               <div className='flex gap-3'>
-                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-primary-darker rounded-xl px-5 py-2 text-blaupunkt-primary-darker font-medium text-md cursor-pointer hover:bg-blaupunkt-primary-darker hover:text-white transition-colors'>
                   Contact
                 </Link>
               </div>
@@ -151,7 +160,7 @@ const Services = () => {
                 {serviceItems[2].description}
               </p>
               <div className='flex gap-3'>
-                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-primary-darker rounded-xl px-5 py-2 text-blaupunkt-primary-darker font-medium text-md cursor-pointer hover:bg-blaupunkt-primary-darker hover:text-white transition-colors'>
                   Contact
                 </Link>
               </div>
@@ -165,6 +174,7 @@ const Services = () => {
                 src={Servicepage.ServicesPageImg}
                 alt='Blaupunkt EV Charging Station'
                 className='w-full h-full object-cover'
+                loading='lazy'
               />
             </div>
           </div>

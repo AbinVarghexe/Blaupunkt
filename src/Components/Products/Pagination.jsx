@@ -18,6 +18,7 @@ const Pagination = ({
       <motion.button
         onClick={handlePreviousPage}
         disabled={currentPage === 1}
+        aria-label="Go to previous page"
         className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-myriad text-xs sm:text-sm transition-colors ${
           currentPage === 1
             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
@@ -41,6 +42,7 @@ const Pagination = ({
       <motion.button
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
+        aria-label="Go to next page"
         className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-myriad text-xs sm:text-sm transition-colors ${
           currentPage === totalPages
             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
