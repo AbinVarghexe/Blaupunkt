@@ -4,7 +4,7 @@
 node_modules/
 pnpm-lock.yaml
 package-lock.json
-.pnp
+.pnp 
 .pnp.js
 
 # ==========================================

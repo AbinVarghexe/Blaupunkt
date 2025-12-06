@@ -61,7 +61,7 @@ const Services = () => {
 
       {/* Services Header */}
       <div className=' text-3xl md:text-5xl font-semibold items-center justify-center flex py-6 md:py-14'>
-        <h1>Our Services</h1>
+        <div>Our Services</div>
       </div>
 
       {/* Subtitle */}

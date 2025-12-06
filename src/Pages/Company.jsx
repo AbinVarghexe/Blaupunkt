@@ -84,9 +84,9 @@ const Company = () => {
           {/* Main Header Section */}
           <header className="mb-8">
             <div className="text-center mb-8">
-              <h1 className="text-[32px] font-semibold text-blaupunkt-dark mb-4 leading-normal">
+              <h2 className="text-[32px] font-semibold text-blaupunkt-dark mb-4 leading-normal">
                 Quality Is In The Name
-              </h1>
+              </h2>
               <p className="text-xs font-light text-blaupunkt-primary-darker">
                 Blaupunkt's History In a Nutshell
               </p>
@@ -242,9 +242,9 @@ const Company = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="absolute w-full max-w-[1023px] h-12 top-[82px] lg:top-[90px] left-1/2 transform -translate-x-1/2 text-blaupunkt-dark text-5xl font-semibold text-center">
+          <h2 className="absolute w-full max-w-[1023px] h-12 top-[82px] lg:top-[90px] left-1/2 transform -translate-x-1/2 text-blaupunkt-dark text-5xl font-semibold text-center">
             Quality Is In The Name
-          </h1>
+          </h2>
 
           {/* Subtitle */}
           <p className="absolute w-full max-w-[1023px] h-[19px] top-[140px] lg:top-[148px] left-1/2 transform -translate-x-1/2 text-blaupunkt-secondary text-lg text-center">

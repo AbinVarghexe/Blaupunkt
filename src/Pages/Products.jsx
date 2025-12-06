@@ -162,10 +162,14 @@ const Products = () => {
   return (
     <>
       <SEO 
-        title="All Products - Blaupunkt EV Charging Solutions"
-        description="Browse Blaupunkt's complete range of EV charging products including AC chargers, DC fast chargers, portable charging solutions, and premium charging cables."
-        keywords="EV charging products, electric vehicle chargers, AC chargers, DC fast chargers, charging cables"
-        canonical="/products"
+        title="EV Charging Products UAE | Blaupunkt Complete Range"
+        description="Browse Blaupunkt's complete range of EV charging products in UAE including AC chargers, DC fast chargers, portable charging solutions, and premium charging cables for all electric vehicles."
+        keywords="EV charging products UAE, electric vehicle chargers UAE, AC chargers UAE, DC chargers UAE, EV charging cables, Blaupunkt EV products"
+        canonical="https://blaupunkt-ev.com/products"
+        ogTitle="EV Charging Products UAE | Blaupunkt"
+        ogDescription="Complete range of EV charging solutions for UAE"
+        twitterTitle="EV Charging Products UAE | Blaupunkt"
+        twitterDescription="Complete range of EV charging solutions for UAE"
       />
       <div className="min-h-screen bg-white">
         <Navbar />
@@ -179,9 +183,12 @@ const Products = () => {
 
           {/* Page Header */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-            <h1 className="text-3xl sm:text-4xl font-semibold text-blaupunkt-dark font-myriad mb-6 text-center">
+            <h1 className="sr-only">EV Charging Products UAE — Blaupunkt Complete Range</h1>
+            <h2 className="sr-only">AC chargers, DC fast chargers, and portable charging solutions</h2>
+            <h2 className="sr-only">Premium EV charging cables for all electric vehicles in UAE</h2>
+            <div className="text-3xl sm:text-4xl font-semibold text-blaupunkt-dark font-myriad mb-6 text-center">
               All Products
-            </h1>
+            </div>
 
             {/* Search Bar */}
             <SearchBar
