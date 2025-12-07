@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* SEO H1 - Hidden from users but visible to search engines */
+.seo-heading {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Blaupunkt Custom Color Variables */
 :root {
   /* Primary Blues */
