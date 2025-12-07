@@ -63,7 +63,7 @@ const Company = () => {
     <>
       <SEO 
         title="EV Charging Solutions UAE | About Blaupunkt"
-        description="Learn about Blaupunkt’s EV charging solutions in the UAE. Trusted German technology for home, commercial, and fast-charging applications."
+        description="Learn about Blaupunkt's EV charging solutions in the UAE. Trusted German technology for home, commercial, and fast-charging applications."
         keywords="EV charging solutions UAE, Blaupunkt EV charging, DEWA compliant EV chargers, home EV charging UAE, commercial EV charging UAE, fast charging solutions, German EV technology"
         canonical="https://blaupunkt-ev.com/company"
         ogTitle="About Blaupunkt EV Charging"
@@ -71,6 +71,7 @@ const Company = () => {
         twitterTitle="About Blaupunkt EV Charging"
         twitterDescription="Premium EV charging solutions from Blaupunkt."
         ogImage={companyPageImgs.picture3}
+        ogType="website"
       />
       <div className="bg-white min-h-screen w-full">
       <h1 className="sr-only">About Blaupunkt — EV Charging Solutions in the UAE</h1>

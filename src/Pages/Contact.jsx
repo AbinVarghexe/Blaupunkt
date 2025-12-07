@@ -15,6 +15,7 @@ const ContactPage = () => {
         ogDescription="Reach out to Blaupunkt for EV charger support."
         twitterTitle="Contact Blaupunkt UAE"
         twitterDescription="Reach out to Blaupunkt for EV charger support."
+        ogType="website"
       />
       <div>
        <h1 className="sr-only">Contact Blaupunkt UAE</h1>

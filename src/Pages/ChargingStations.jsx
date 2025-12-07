@@ -38,6 +38,7 @@ const ChargingStations = () => {
         twitterTitle="Home EV Charging Station UAE"
         twitterDescription="Reliable AC and Wallbox-style chargers for homes."
         ogImage={chargingStationProductImages.spec}
+        ogType="website"
       />
       <div>
       <h1 className="sr-only">Home EV Charging Station UAE — Blaupunkt AC Chargers</h1>

@@ -19,6 +19,7 @@ const HomePage = () => {
         twitterTitle="EV Charger UAE – Blaupunkt"
         twitterDescription="Premium EV chargers for UAE homes and businesses."
         ogImage={OgImage}
+        ogType="website"
       />
       <div>
         <h1 className="sr-only">EV Charger UAE — Blaupunkt EV Charging Solutions</h1>

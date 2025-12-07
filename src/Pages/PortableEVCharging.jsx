@@ -46,6 +46,7 @@ const PortableEVCharging = () => {
         twitterTitle="Portable EV Charger UAE"
         twitterDescription="Compact mobile chargers for emergencies and travel."
         ogImage={portableEvChargingProductImages.specifications}
+        ogType="website"
       />
       <div>
       <h1 className="sr-only">Portable EV Charger UAE — Mobile & Emergency Chargers</h1>

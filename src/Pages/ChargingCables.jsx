@@ -36,6 +36,7 @@ const ChargingCables = () => {
         twitterTitle="EV Charging Cables UAE"
         twitterDescription="Premium Type 2 and high-power EV charging cables."
         ogImage={chargingCableProductImages.specifications}
+        ogType="website"
       />
       <div>
       <h1 className="sr-only">EV Charging Cables in UAE — Type 2 & 22kW</h1>

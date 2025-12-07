@@ -49,6 +49,7 @@ const Services = () => {
         twitterTitle="EV Charger Installation Services"
         twitterDescription="Certified home and commercial EV charger installation."
         ogImage={Servicepage.ServicesPageImg}
+        ogType="website"
       />
       <div className='bg-white relative w-full py-8'>
       <h1 className="sr-only">EV Charger Installation UAE — Blaupunkt Services</h1>

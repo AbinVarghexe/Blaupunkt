@@ -44,6 +44,7 @@ const DCChargingStation = () => {
         twitterTitle="DC Charger UAE"
         twitterDescription="Fast and commercial DC charging solutions."
         ogImage={dcChargingStationImages.dcMidSpec}
+        ogType="website"
       />
       <div>
       <h1 className="sr-only">DC Charger UAE — Commercial & Fast Charging</h1>

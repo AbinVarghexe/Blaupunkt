@@ -46,6 +46,7 @@ const DCSuperFastChargingStation = () => {
         twitterTitle="DC Super Fast Charger UAE"
         twitterDescription="Ultra fast, high-power EV charging stations."
         ogImage={dcSuperFastChargingStationImages.fastSpec}
+        ogType="website"
       />
       <div>
       <h1 className="sr-only">DC Super Fast Charger UAE — Ultra Fast EV Charging</h1>
